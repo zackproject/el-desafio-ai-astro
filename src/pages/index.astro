@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import { aiChatResponse } from "../../utils/ai";
+import { promptAi, systemAi } from "../../utils/prompts";
+
+const mPrompt = promptAi.call.otaku;
+const mSystem = systemAi.call;
+
+const data = await aiChatResponse(mPrompt, mSystem);
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>Test AI</h1>
+    <h2>Question</h2>
+    System:
+    <p>{mSystem}</p>
+    Prompt:
+    <p>{mPrompt}</p>
+    <h2>Response</h2>
+    <p>{data.text}</p>
+  </main>
+</Layout>
+
+<style>
+  * {
+    color: white;
+  }
+  p {
+    color: yellow;
+  }
+</style>
