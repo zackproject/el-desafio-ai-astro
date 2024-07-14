@@ -1,0 +1,85 @@
+---
+
+---
+
+<div class="comodin-items">
+  <select id="callViewList" name="select" size="5">
+    <option value="0">Tita Elro Sario</option>
+    <option value="1">Abuelo Elvis Nieto</option>
+    <option value="2">Prima Ines Esario</option>
+    <option value="3">Shoto Sama</option>
+    <option value="4">Hermano Elton Tito</option>
+  </select>
+  <div class="contact-call">
+    <button class="comodin" title="Hacer llamada">LLAMAR</button>
+  </div>
+</div>
+<style>
+  .comodin-items {
+    /*Espai entre logo i select */
+    margin-top: 20px;
+    /*Centra els elements al centre */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Comodin Llamada - Contactos*/
+  .contact-call > button {
+    background-color: #0f871b;
+    border: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    margin: 20px;
+    -webkit-box-shadow: 7px 2px 15px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 2px 15px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 7px 2px 15px -3px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+
+    &&:hover {
+      background-color: #0e6417;
+    }
+  }
+
+  /* Contactos css */
+  /* Tamany scrollball 'select'*/
+  .comodin-items > select::-webkit-scrollbar {
+    width: 14px;
+    background-color: #171929;
+    border-radius: 6px;
+  }
+
+  /*select::-webkit-scrollbar-track{
+    }*/
+  .comodin-items > select::-webkit-scrollbar-thumb {
+    background-color: #727382;
+    border-radius: 6px;
+  }
+
+  .comodin-items > select {
+    background-color: #4b5269;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  .comodin-items > select > option:checked {
+    background-color: #303543;
+    color: white;
+  }
+
+  .comodin-items > select > option {
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    margin: 5px;
+  }
+</style>
