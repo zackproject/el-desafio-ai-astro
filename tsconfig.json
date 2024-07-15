@@ -4,7 +4,8 @@
     "baseUrl": "./src",
     "paths": {
       // Replace the relative route with @ .. and the route
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"]
     }
   }
 }

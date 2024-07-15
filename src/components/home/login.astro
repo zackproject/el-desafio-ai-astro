@@ -1,0 +1,164 @@
+<main id="login">
+  <h1>El desafio A.I</h1>
+  <!-- Primer camp omple el nom-->
+  <label for="inputName" class="title-input">Nick</label>
+  <!--input required -->
+  <input
+    maxlength="12"
+    class="text-input"
+    placeholder="Escribe tu nombre"
+    autocomplete="off"
+    type="text"
+    id="inputName"
+    name="name"
+  />
+  <!-- Segon camp omple categoria -->
+  <label for="categoriaViewList" class="title-input">Categoria</label>
+  <select class="select-opt" id="categoriaViewList">
+    <option value="0">Por defecto</option>
+    <option value="1" id="custom-option">Personalizado</option>
+  </select>
+  <!-- Tercer camp omple  subcategoria -->
+  <label for="rutaViewList" class="title-input">Subcategoria</label>
+  <select class="select-opt" id="rutaViewList">
+    <!-- auto generated-->
+  </select>
+
+  <!-- Boton de Start -->
+  <div class="start-btn">
+    <button title="Empezar nueva partida">NUEVA PARTIDA</button>
+    <button id="resumeGame" title="Recuperar partida anterior"
+      >RECUPERAR PARTIDA</button
+    >
+  </div>
+
+  <a href="./creativo" title="Ir a la página de edición de desafios"
+    >EDITAR DESAFIOS</a
+  >
+  <div class="label-settings">
+    <input
+      type="checkbox"
+      id="usePresentator"
+      name="presentator"
+      value="use"
+      checked
+    />
+    <label for="usePresentator">Presentador</label>
+  </div>
+  <div class="label-settings">
+    <input
+      type="checkbox"
+      id="useCamera"
+      name="useCamera"
+      value="camera"
+      checked
+    />
+    <label for="useCamera">Videocamara</label>
+  </div>
+  <div class="label-settings">
+    <input
+      type="checkbox"
+      id="useGrenscreen"
+      name="greenscreen"
+      value="green"
+    />
+    <label for="useGrenscreen">Pantalla verde</label>
+  </div>
+</main>
+<style>
+  h1 {
+    color: white;
+    text-align: center;
+  }
+
+  #login {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 10px;
+
+    .select-opt {
+      background: transparent;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      color: white;
+      font-size: 18px;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .select-opt > option {
+      background-color: black;
+      color: white;
+    }
+
+    .start-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    a {
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 10px 40px 10px 40px;
+      border-radius: 6px;
+      text-align: center;
+      transition: all 0.5s;
+
+      &&:hover {
+        background-color: white;
+        color: black;
+        cursor: pointer;
+      }
+    }
+
+    .start-btn > button {
+      background-color: transparent;
+      border-radius: 6px;
+      color: white;
+      font-size: 20px;
+      border: 1px solid lightgray;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      transition: all 0.5s;
+    }
+
+    .start-btn > button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+    }
+
+    .text-input {
+      background-color: transparent;
+      border-radius: 6px;
+      border: 1px solid lightgray;
+      padding: 10px;
+    }
+
+    .title-input {
+      color: white;
+    }
+
+    input.text-input {
+      color: white;
+    }
+
+    .label-settings {
+      color: white;
+
+      input,
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+</style>

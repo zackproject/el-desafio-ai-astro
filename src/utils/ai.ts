@@ -1,6 +1,6 @@
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
-import { env } from "../src/config";
+import { env } from "config"
 
 const groq = createOpenAI({
     baseURL: env.BASE_URL,

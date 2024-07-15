@@ -1,53 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "@components/Navbar.astro";
-import { aiChatResponse } from "../../utils/ai";
-import { promptAi, systemAi } from "../../utils/prompts";
-import ComodinLayout from "@components/comodines/ComodinLayout.astro";
-import ContactosDialog from "@components/comodines/ContactosDialog.astro";
-import LlamadaDialog from "@components/comodines/LlamadaDialog.astro";
-import PublicoDialog from "@components/comodines/PublicoDialog.astro";
-//const mPrompt = promptAi.call.otaku;
-//const mSystem = systemAi.call;
+import Game from "./Game.astro";
+import Home from "./Home.astro";
+
 // const data = await aiChatResponse(mPrompt, mSystem);
 ---
 
 <Layout title="El Desafio AI" language="es">
-  <main>
-    <Navbar class:list="element1" showComodin={true} />
-    <ComodinLayout image="./contact.png" alt="Comodin de Contactos">
-      <ContactosDialog />
-    </ComodinLayout>
-    <ComodinLayout image="./phone.png" alt="Comodin Llamada">
-      <LlamadaDialog
-        name="Elro Sario"
-        message="Hola sobrino, Dios te bendiga"
-      />
-    </ComodinLayout>
-
-    <ComodinLayout image="./people.png" alt="Comodin Público">
-      <PublicoDialog />
-    </ComodinLayout>
-  </main>
-
-  <style>
-    main {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      padding: 5px;
-    }
-
-    .element1 {
-      flex: 0 1 auto;
-    }
-
-    .element3 {
-      flex: 0 1 auto;
-    }
-
-    .element2 {
-      flex: 1 1 auto;
-    }
-  </style>
+  <Home />
 </Layout>
