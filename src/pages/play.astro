@@ -1,0 +1,59 @@
+---
+import ComodinLayout from "@components/game/comodines/ComodinLayout.astro";
+import ContactosDialog from "@components/game/comodines/ContactosDialog.astro";
+import LlamadaDialog from "@components/game/comodines/LlamadaDialog.astro";
+import PublicoDialog from "@components/game/comodines/PublicoDialog.astro";
+import NextQuestion from "@components/game/NextQuestion.astro";
+import Presenter from "@components/game/Presenter.astro";
+import Quiz from "@components/game/Quiz.astro";
+import Videocamera from "@components/game/Videocamera.astro";
+import Navbar from "@components/shared/Navbar.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="El Desafio - Empieza tu partida" language="es">
+  <div class="container">
+    <Navbar class:list="element1" showComodin={true} />
+    <ComodinLayout image="./contact.png" alt="Comodin de Contactos">
+      <ContactosDialog />
+    </ComodinLayout>
+    <ComodinLayout image="./phone.png" alt="Comodin Llamada">
+      <LlamadaDialog
+        name="Elro Sario"
+        message="Hola sobrino, Dios te bendiga"
+      />
+    </ComodinLayout>
+    <ComodinLayout image="./people.png" alt="Comodin Público">
+      <PublicoDialog />
+    </ComodinLayout>
+    <Videocamera useCamera={false} class:list="element2" />
+
+    <aside id="presentatorQuestion" class="element3">
+      <NextQuestion />
+      <Presenter />
+      <Quiz />
+    </aside>
+  </div>
+
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 5px;
+      justify-content: space-between;
+    }
+
+    .element1 {
+      flex: 0 1 auto;
+    }
+
+    .element3 {
+      flex: 0 1 auto;
+    }
+
+    .element2 {
+      flex: 1 1 auto;
+    }
+  </style>
+</Layout>

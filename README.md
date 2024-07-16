@@ -1,4 +1,5 @@
 # El Desafio AI - Astro
+> :warning: Crea un .env con la variable 'API_KEY' de la I.A [Groq](https://console.groq.com/keys)
 
 ## ¿Qué es?
 Crea tu propio concurso al estilo de uno de los programas más famoso de televisón.
@@ -11,6 +12,9 @@ Crea tu propio concurso al estilo de uno de los programas más famoso de televis
 - Dialogo del presentador cuando fallas, aciertas o pierdes el desafio.
 - Generador de 10 preguntas de más fácil a más difícil
 - Comodín de la llamada con personajes con personalidad única
+- 
+
+
 
 ## Astro commands
 
