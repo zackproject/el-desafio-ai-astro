@@ -1,8 +1,12 @@
 ---
+
+import { ComodinContacto } from "@components/game/comodines/contact/ComodinContact";
+import { ComodinPublico } from "@components/game/comodines/public/ComodinPublico";
+
 interface Props {
   showComodin?: boolean;
 }
-const { showComodin } = Astro.props ;
+const { showComodin } = Astro.props;
 ---
 
 <nav>
@@ -18,38 +22,33 @@ const { showComodin } = Astro.props ;
   {
     showComodin && (
       <div id="comodin-list">
-        <button
-          class="icon-comodin"
-          id="call-com"
-          onclick="showDialog('contact')"
-          title="Usar comodin llamada"
-        >
-          <img
-            src="./phone_logo.png"
-            height="30"
-            width="30"
-            alt="Comodin llamada"
-          />
-        </button>
-        <button
-          class="icon-comodin"
-          id="public-com"
-          onclick="showDialog('public')"
-          title="Usar comodin público"
-        >
-          <img src="./people.png" height="30" width="30" alt="Comodi público" />
-        </button>
-        <button
+        <ComodinPublico
+          logo="./people.png"
+          image="./people.png"
+          alt="Comodin Publico"
+          client:visible
+        />
+
+        <ComodinContacto
+          logo="./phone_logo.png"
+          image="./contact.png"
+          alt="Es una persona Keviin"
+          client:visible
+        />
+      </div>
+    )
+  }
+
+  <!-- 
+       <button
           class="icon-comodin"
           id="fifty-com"
           onclick="comodinFifty(event)"
           title="Usar comodín 50%"
         >
           <img src="./fifty.png" height="30" width="30" alt="Comodin 50%" />
-        </button>
-      </div>
-    )
-  }
+        </button>  
+  -->
 </nav>
 
 <style>
@@ -57,19 +56,5 @@ const { showComodin } = Astro.props ;
     display: flex;
     gap: 10px;
     justify-content: space-between;
-  }
-  .icon-comodin {
-    background-color: #171929;
-    border-radius: 50%;
-    border: 1px solid white;
-    width: 50px;
-    height: 50px;
-    color: white;
-    transition: border 0.8s;
-
-    &&:hover {
-      cursor: pointer;
-      border: 1px solid black;
-    }
   }
 </style>

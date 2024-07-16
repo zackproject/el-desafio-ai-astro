@@ -3,11 +3,20 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      // Replace the relative route with @ .. and the route
-      "@components/*": ["components/*"],
-      "@layouts/*": ["layouts/*"],
-      "@pages/*": ["pages/*"],
-      "@utils/*": ["utils/*"]
-    }
+      "@components/*": [
+        "components/*"
+      ],
+      "@layouts/*": [
+        "layouts/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }

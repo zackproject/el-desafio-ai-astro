@@ -1,21 +1,4 @@
----
-
----
-
-<div class="comodin-items">
-  <select id="callViewList" name="select" size="5">
-    <option value="0">Tita Elro Sario</option>
-    <option value="1">Abuelo Elvis Nieto</option>
-    <option value="2">Prima Ines Esario</option>
-    <option value="3">Shoto Sama</option>
-    <option value="4">Hermano Elton Tito</option>
-  </select>
-  <div class="contact-call">
-    <button class="comodin" title="Hacer llamada">LLAMAR</button>
-  </div>
-</div>
-<style>
-  .comodin-items {
+.comodin-items {
     /*Espai entre logo i select */
     margin-top: 20px;
     /*Centra els elements al centre */
@@ -23,9 +6,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  /* Comodin Llamada - Contactos*/
-  .contact-call > button {
+}
+
+/* Comodin Llamada - Contactos*/
+.contact-call>button {
     background-color: #0f871b;
     border: none;
     padding-left: 30px;
@@ -42,44 +26,76 @@
     cursor: pointer;
 
     &&:hover {
-      background-color: #0e6417;
+        background-color: #0e6417;
     }
-  }
+}
 
-  /* Contactos css */
-  /* Tamany scrollball 'select'*/
-  .comodin-items > select::-webkit-scrollbar {
+/* Contactos css */
+/* Tamany scrollball 'select'*/
+.comodin-items>select::-webkit-scrollbar {
     width: 14px;
     background-color: #171929;
     border-radius: 6px;
-  }
+}
 
-  /*select::-webkit-scrollbar-track{
+/*select::-webkit-scrollbar-track{
     }*/
-  .comodin-items > select::-webkit-scrollbar-thumb {
+.comodin-items>select::-webkit-scrollbar-thumb {
     background-color: #727382;
     border-radius: 6px;
-  }
+}
 
-  .comodin-items > select {
+.comodin-items>select {
     background-color: #4b5269;
     border: none;
     border-radius: 10px;
     color: white;
     width: 200px;
     margin-top: 20px;
-  }
+}
 
-  .comodin-items > select > option:checked {
+.comodin-items>select>option:checked {
     background-color: #303543;
     color: white;
-  }
+}
 
-  .comodin-items > select > option {
+.comodin-items>select>option {
     color: white;
     padding: 10px;
     border-radius: 6px;
     font-size: 16px;
     margin: 5px;
-  }
-</style>
+}
+
+/* call */
+.comodin-items {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name-call {
+    color: white;
+    margin-top: 30px;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+#text-call {
+    color: white;
+    text-align: center;
+    margin: 20px;
+}
+
+#time-call {
+    font-size: 30px;
+    color: white;
+}
+
+.call-close>button {
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+}
