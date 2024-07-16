@@ -7,10 +7,12 @@ import NextQuestion from "@components/game/NextQuestion.astro";
 import Presenter from "@components/game/Presenter.astro";
 import Quiz from "@components/game/Quiz.astro";
 import Videocamera from "@components/game/Videocamera.astro";
-import Navbar from "@components/Navbar.astro";
+import Navbar from "@components/shared/Navbar.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
-<div class="container">
+<Layout title="El Desafio - Empieza tu partida" language="es">
+  <div class="container">
     <Navbar class:list="element1" showComodin={true} />
     <ComodinLayout image="./contact.png" alt="Comodin de Contactos">
       <ContactosDialog />
@@ -54,3 +56,4 @@ import Navbar from "@components/Navbar.astro";
       flex: 1 1 auto;
     }
   </style>
+</Layout>

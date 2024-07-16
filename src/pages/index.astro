@@ -1,11 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Game from "./Game.astro";
-import Home from "./Home.astro";
-
+import Login from "@components/home/login.astro";
+import Navbar from "@components/shared/Navbar.astro";
+import Layout from "@layouts/Layout.astro";
 // const data = await aiChatResponse(mPrompt, mSystem);
 ---
 
-<Layout title="El Desafio AI" language="es">
-  <Home />
+<Layout title="El Desafio AI - 10 preguntas y 4 comodines" language="es">
+  <Navbar class:list="element1" showComodin={false} />
+  <Login />
 </Layout>

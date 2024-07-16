@@ -1,3 +1,7 @@
+---
+import { quizList } from "@utils/data/questions";
+---
+
 <main id="login">
   <h1>El desafio A.I</h1>
   <!-- Primer camp omple el nom-->
@@ -15,25 +19,19 @@
   <!-- Segon camp omple categoria -->
   <label for="categoriaViewList" class="title-input">Categoria</label>
   <select class="select-opt" id="categoriaViewList">
-    <option value="0">Por defecto</option>
-    <option value="1" id="custom-option">Personalizado</option>
-  </select>
-  <!-- Tercer camp omple  subcategoria -->
-  <label for="rutaViewList" class="title-input">Subcategoria</label>
-  <select class="select-opt" id="rutaViewList">
-    <!-- auto generated-->
+      {quizList.map((e) => <option value={e.id}>{e.title}</option>)}
   </select>
 
   <!-- Boton de Start -->
   <div class="start-btn">
-    <button title="Empezar nueva partida">NUEVA PARTIDA</button>
-    <button id="resumeGame" title="Recuperar partida anterior"
+    <a href="./play" title="Empezar nueva partida">EMPEZAR DESAFIO</a>
+    <!--<button id="resumeGame" title="Recuperar partida anterior"
       >RECUPERAR PARTIDA</button
-    >
+    > -->
   </div>
 
-  <a href="./creativo" title="Ir a la página de edición de desafios"
-    >EDITAR DESAFIOS</a
+  <a href="./settings" title="Ir a la página de crear de desafios"
+    >CREAR DESAFIOS</a
   >
   <div class="label-settings">
     <input

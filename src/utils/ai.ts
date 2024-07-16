@@ -9,10 +9,11 @@ const groq = createOpenAI({
 
 // https://sdk.vercel.ai/docs/foundations/prompts
 export async function aiChatResponse(mPrompt: string, mSystem: string) {
-    return await generateText({
+    const result = await generateText({
         model: groq(env.MODEL),
         system: mPrompt,
         prompt: mSystem,
     });
+    return result.text;
 }
 
