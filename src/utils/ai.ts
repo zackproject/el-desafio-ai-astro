@@ -1,19 +1,18 @@
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
-import { env } from "config"
+import { loc } from "config.js";
 
 const groq = createOpenAI({
-    baseURL: env.BASE_URL,
-    apiKey: env.API_KEY,
+    baseURL: loc.BASE_URL,
+    apiKey: loc.API_KEY,
 });
 
 // https://sdk.vercel.ai/docs/foundations/prompts
 export async function aiChatResponse(mPrompt: string, mSystem: string) {
     const result = await generateText({
-        model: groq(env.MODEL),
+        model: groq(loc.MODEL),
         system: mPrompt,
         prompt: mSystem,
     });
     return result.text;
 }
-

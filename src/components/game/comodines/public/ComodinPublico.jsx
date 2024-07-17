@@ -2,13 +2,16 @@ import { useRef } from "preact/hooks";
 import "../comodin.css"
 import "./comodinPublic.css"
 
-export function ComodinPublico(props) {
+export function ComodinPublico() {
     const voteA = 10;
     const voteB = 30;
     const voteC = 40;
     const voteD = 21;
     const mDialog = useRef(null);
-    const { logo, image, alt } = props;
+
+    const logo = "./people.png"
+    const image = "./people.png"
+    const alt = "Comodin Publico"
     return (
         <>
             <dialog class="comodin-parent" ref={mDialog}>

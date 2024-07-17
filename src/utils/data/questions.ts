@@ -466,3 +466,11 @@ export const quizList = [
         quiz: natureQuiz
     },
 ]
+
+
+export function getQuestionQuiz() {
+    const i = 3;
+    const quiz = natureQuiz;
+    console.log(quiz);
+    return `${quiz[i].question} A) ${quiz[i].options[0]} B) ${quiz[i].options[1]} C) ${quiz[i].options[2]} D) ${quiz[i].options[3]} `
+}

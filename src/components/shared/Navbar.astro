@@ -1,8 +1,6 @@
 ---
-
 import { ComodinContacto } from "@components/game/comodines/contact/ComodinContact";
 import { ComodinPublico } from "@components/game/comodines/public/ComodinPublico";
-
 interface Props {
   showComodin?: boolean;
 }
@@ -22,19 +20,8 @@ const { showComodin } = Astro.props;
   {
     showComodin && (
       <div id="comodin-list">
-        <ComodinPublico
-          logo="./people.png"
-          image="./people.png"
-          alt="Comodin Publico"
-          client:visible
-        />
-
-        <ComodinContacto
-          logo="./phone_logo.png"
-          image="./contact.png"
-          alt="Es una persona Keviin"
-          client:visible
-        />
+        <ComodinPublico client:visible />
+        <ComodinContacto client:visible />
       </div>
     )
   }
