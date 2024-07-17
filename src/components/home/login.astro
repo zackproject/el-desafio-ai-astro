@@ -4,6 +4,7 @@ import { quizList } from "@utils/data/questions";
 
 <main id="login">
   <h1>El desafio A.I</h1>
+  
   <!-- Primer camp omple el nom-->
   <label for="inputName" class="title-input">Nick</label>
   <!--input required -->
@@ -19,7 +20,7 @@ import { quizList } from "@utils/data/questions";
   <!-- Segon camp omple categoria -->
   <label for="categoriaViewList" class="title-input">Categoria</label>
   <select class="select-opt" id="categoriaViewList">
-      {quizList.map((e) => <option value={e.id}>{e.title}</option>)}
+    {quizList.map((e) => <option value={e.id}>{e.title}</option>)}
   </select>
 
   <!-- Boton de Start -->

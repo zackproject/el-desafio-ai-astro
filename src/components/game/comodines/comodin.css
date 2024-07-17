@@ -1,37 +1,20 @@
----
-interface Props {
-  image: string;
-  alt: string;
-  close?: string;
-}
-const { image, alt, close } = Astro.props;
----
-
-<dialog class="comodin-parent">
-  <div class="logo-comodin">
-    <img src={image} height="50" width="45" alt={alt} />
-  </div>
-  <span class="close-btn" aria-label="Cerrar">X</span>
-  <slot />
-  <!-- -- here the future childs ---->
-</dialog>
-<style>
-  .comodin-parent {
+/* ComodinLayout */
+.comodin-parent {
     background-color: #4b5269;
     padding: 10px;
     border-radius: 6px;
     margin: 0 auto;
-    width: 250px;
+    width: 300px;
     margin-top: 50px;
     overflow: unset;
     border: none;
-  }
+}
 
-  .comodin-parent::backdrop {
+.comodin-parent::backdrop {
     background-color: rgba(0, 0, 0, 0.684);
-  }
+}
 
-  .logo-comodin {
+.logo-comodin {
     background-color: #858585;
     width: 50px;
     /* El hijo es absolute, el padre relativo */
@@ -46,7 +29,7 @@ const { image, alt, close } = Astro.props;
     border-radius: 50%;
 }
 
-  .close-btn {
+.close-btn {
     background-color: red;
     color: white;
     padding: 5px 9px 5px 9px;
@@ -56,4 +39,21 @@ const { image, alt, close } = Astro.props;
     top: 10px;
     cursor: pointer;
 }
-</style>
+
+/* end ComodinLayout */
+
+
+.icon-comodin {
+    background-color: #171929;
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 50px;
+    height: 50px;
+    color: white;
+    transition: border 0.8s;
+
+    &&:hover {
+      cursor: pointer;
+      border: 1px solid black;
+    }
+  }

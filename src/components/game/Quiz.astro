@@ -1,6 +1,11 @@
 ---
-const question = "¿Cuál es la suma de 1 +1 ?";
-const options = ["Uno", "Dos", "Tres", "Cuatro"];
+const question = "¿Qué significa la sigla 'CO2'?";
+const options = [
+  "Dióxido de carbono",
+  "Monóxido de carbono",
+  "Óxido de carbono",
+  "Carbonato de oxígeno",
+];
 ---
 
 <div id="quiz-and-options">
@@ -97,7 +102,7 @@ const options = ["Uno", "Dos", "Tres", "Cuatro"];
       font-size: 18px;
     }
   }
-  
+
   /* test with .answer-quiz:hover, only if is in game and not reponse */
   .mark-answer:hover {
     background-color: orangered !important;

@@ -1,5 +1,6 @@
 ---
 import Login from "@components/home/login.astro";
+import { RequestApiKey } from "@components/RequestApiKey";
 import Navbar from "@components/shared/Navbar.astro";
 import Layout from "@layouts/Layout.astro";
 // const data = await aiChatResponse(mPrompt, mSystem);
@@ -7,5 +8,6 @@ import Layout from "@layouts/Layout.astro";
 
 <Layout title="El Desafio AI - 10 preguntas y 4 comodines" language="es">
   <Navbar class:list="element1" showComodin={false} />
+  <RequestApiKey client:only />
   <Login />
 </Layout>
