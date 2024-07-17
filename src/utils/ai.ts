@@ -4,7 +4,7 @@ import { loc } from "config.ts";
 
 const groq = createOpenAI({
     baseURL: loc.BASE_URL,
-    apiKey: loc.API_KEY,
+    apiKey: loc.API_KEY || "",
 });
 
 // https://sdk.vercel.ai/docs/foundations/prompts
