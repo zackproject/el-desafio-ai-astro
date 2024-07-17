@@ -1,3 +1,9 @@
 export function formatSeconds(segundos: number) {
-    return segundos < 10 ? "00:0" + segundos : "00:" + segundos;
+    const min = Math.floor(segundos / 60);
+    const secRestants = segundos % 60;
+
+    const totalMin = min < 10 ? '0' + min : min.toString();
+    const totalSec = secRestants < 10 ? '0' + secRestants : secRestants.toString();
+
+    return totalMin + ':' + totalSec;
 }

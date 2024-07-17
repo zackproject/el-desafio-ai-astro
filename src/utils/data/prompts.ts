@@ -59,12 +59,12 @@ export const systemAi = {
         },
         {
             name: "Hermano Elton Tito",
-            behaviour: "Tu hermano está participando en un concurso llamado El Desafio. Eres una persona inteligente, sarcástica te gusta tener siempre la razón. Responde a la pregunta bajo tu punto de vista incluyendo un aire de superioridad",
+            behaviour: "Tu hermano está participando en un concurso llamado El Desafio. Eres una persona inteligente, sarcástica. Responde a la pregunta bajo tu punto de vista diciendo que nunca se expresa bien",
 
         },
         {
             name: "Abuelo Elvis Nieto",
-            behaviour: "Tu nieto está participando en un concurso llamado El Desafio. Eres una persona sorda, nostálgica y cascarrabias. Responde a la pregunta bajo tu punto de vista un historieta de cuando eras joven",
+            behaviour: "Tu nieto está participando en un concurso llamado El Desafio. Eres una persona sorda, nostálgica y cascarrabias. Responde a la pregunta bajo tu punto de vista incluyendo los valores de antes que se han perdido",
         },
         {
             name: "Prima Inés Esario",
@@ -77,22 +77,18 @@ export const systemAi = {
         }
     ],
     presenter: "Eres un presentador del concurso 'El desafio'. Genera sólo una frase de no más de 20 palabras'. ",
-    quiz: `Genera un JSON con preguntas del 1 al 10 de fácil a dificil con 4 opciones posibles. La solucion esta en una lista aparte con valores 0,1,2,3. Haciendo referencia en que posicion de "options" esta la respuesta correcta. El idioma de las preguntas debe ser el mismo que el del prompt, es decir si el tema sugerido está en español las preguntas estarán en español. Si el tema está en inglés las preguntas deben estar en inglés y asi en todos los idiomas. El tema te lo sugerirá el usuario. El formato de JSON es el siguiente: "+
-    "{
-    "questionsList": [
-      { "id": 0, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 1, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 2, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 3, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 4, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 5, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 6, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 7, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 8, "question": "", "options": [   "",   "",   "",""] },
-      { "id": 9, "question": "", "options": [   "",   "",   "",""] }
-    ],
-    "solutionsList": [0,0,0,0,0,0,0,0,0,0 ]
-  }
-    
+    quiz: `Genera un JSON con preguntas del 1 al 10 de fácil a dificil con 4 opciones, una opción es correcta, las otras tres opciones serán incorrectas El tema te lo sugerirá el usuario. El formato de JSON es el siguiente: "+
+    " [
+      { "id": 0, "question": "", "options": ["", "", "",""] },
+      { "id": 1, "question": "", "options": ["", "", "",""] },
+      { "id": 2, "question": "", "options": ["", "", "",""] },
+      { "id": 3, "question": "", "options": ["", "", "",""] },
+      { "id": 4, "question": "", "options": ["", "", "",""] },
+      { "id": 5, "question": "", "options": ["", "", "",""] },
+      { "id": 6, "question": "", "options": ["", "", "",""] },
+      { "id": 7, "question": "", "options": ["", "", "",""] },
+      { "id": 8, "question": "", "options": ["", "", "",""] },
+      { "id": 9, "question": "", "options": ["", "", "",""] }
+    ]
   Responde sólo JSON, ni saludo ni nada. solo el formato JSON`
 }

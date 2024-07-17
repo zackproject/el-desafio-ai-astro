@@ -1,5 +1,58 @@
 // Default quiz without ai for example games
 
+export const emptyQuiz = [
+    {
+        "id": 1,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 2,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 3,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 4,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 5,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 6,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 7,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 8,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 9,
+        "question": "",
+        "options": ["", "", "", ""]
+    },
+    {
+        "id": 10,
+        "question": "",
+        "options": ["", "", "", ""]
+    }
+];
+
 const tecnoQuiz = [
     {
         "id": 1,
@@ -469,8 +522,8 @@ export const quizList = [
 
 
 export function getQuestionQuiz() {
-    const i = 3;
-    const quiz = natureQuiz;
-    console.log(quiz);
+    const i = 4;
+    const quiz = artQuiz;
+    console.log(quiz[i]);
     return `${quiz[i].question} A) ${quiz[i].options[0]} B) ${quiz[i].options[1]} C) ${quiz[i].options[2]} D) ${quiz[i].options[3]} `
 }
