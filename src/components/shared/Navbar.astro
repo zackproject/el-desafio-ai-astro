@@ -20,8 +20,8 @@ const { showComodin } = Astro.props;
   {
     showComodin && (
       <div id="comodin-list">
-        <ComodinPublico client:visible />
-        <ComodinContacto client:visible />
+        <ComodinPublico client:only />
+        <ComodinContacto client:only />
       </div>
     )
   }

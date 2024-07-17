@@ -1,6 +1,7 @@
 // config.ts
+export const API_KEY = "API_KEY";
 export const loc = {
     BASE_URL: "https://api.groq.com/openai/v1",
     MODEL: "llama3-8b-8192",
-    API_KEY: process.env.API_KEY
+    API_KEY: window.localStorage.getItem(API_KEY)
 }
