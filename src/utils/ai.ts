@@ -1,6 +1,6 @@
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateText } from "ai";
-import { loc } from "config.js";
+import { loc } from "config.ts";
 
 const groq = createOpenAI({
     baseURL: loc.BASE_URL,
