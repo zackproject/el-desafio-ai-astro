@@ -1,8 +1,7 @@
 import { useState } from "preact/hooks";
 import "./creativeMode.css";
 import { emptyQuiz } from "@utils/data/questions";
-import { systemAi } from "@utils/data/prompts";
-import { aiChatResponse } from "@utils/ai";
+import Creator from "@entities/Creator";
 
 export function CreativeMode() {
     const [data, setData] = useState(emptyQuiz);
@@ -23,14 +22,14 @@ export function CreativeMode() {
     const fetchCreative = async (event) => {
         event.preventDefault();
         setLoading(true);
-        setResponseCreative("Recopilando información ...");
+        setResponseCreative(Creator.getLoading());
         try {
-            const response = await aiChatResponse(theme, systemAi.quiz);
+            const response = await Creator.getSuggestQuiz(theme);
             const result = JSON.parse(response)
             setData(result);
-            setResponseCreative("¡Hecho!");
-        } catch {
-            setResponseCreative("Ups, prueba con otra cosa");
+            setResponseCreative(Creator.getSuccess());
+        } catch (error) {
+            setResponseCreative(Creator.getError(error));
         } finally {
             setLoading(false);
         }
