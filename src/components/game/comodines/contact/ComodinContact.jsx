@@ -1,10 +1,9 @@
 import { useRef, useState } from "preact/hooks";
 import "../comodin.css";
 import "./comodinContact.css";
-import { systemAi } from "@utils/data/prompts";
-import { aiChatResponse } from "@utils/ai";
 import { getQuestionQuiz } from "@utils/data/questions";
 import { formatSeconds } from "@utils/timer";
+import Call from "@entities/Call"
 
 export function ComodinContacto() {
     const mDialogContact = useRef(null);
@@ -21,7 +20,7 @@ export function ComodinContacto() {
         setCounter(0);
         setLoading(true);
         try {
-            const response = await aiChatResponse(getQuestionQuiz(), systemAi.calls[numPerson].behaviour);
+            const response = await Call.getCallResponse(getQuestionQuiz(), numPerson)
             setResponseCall(response);
             const interval = setInterval(() => {
                 setCounter((prevCounter) => prevCounter + 1);
@@ -29,8 +28,8 @@ export function ComodinContacto() {
                     clearInterval(interval);
                 }
             }, 1000);
-        } catch {
-            setResponseCall("Nadie responde al teléfono");
+        } catch (error) {
+            setResponseCall(Call.getNoCallResponse(error));
         } finally {
             setLoading(false);
         }
@@ -43,9 +42,9 @@ export function ComodinContacto() {
                     <img src="./phone.png" height="50" width="45" alt="Teléfono" />
                 </div>
                 <div class="comodin-items">
-                    <div id="name-call">{systemAi.calls[numPerson].name}</div>
+                    <div id="name-call">{Call.getName(numPerson)}</div>
                     <div id="text-call" title="Mensaje de llamada">
-                        {loading ? 'Llamando...' : data}
+                        {loading ? Call.usePhone() : data}
                     </div>
                     <div id="time-call" title="Tiempo de llamada">{formatSeconds(counter)}</div>
                     <div class="call-close">
@@ -61,8 +60,8 @@ export function ComodinContacto() {
                 </div>
                 <span class="close-btn" aria-label="Cerrar" onClick={() => mDialogContact.current.close()}>X</span>
                 <div class="comodin-items">
-                    <select value={numPerson} onChange={handleSelected} size={systemAi.calls.length}>
-                        {systemAi.calls.map((e, i) => (
+                    <select value={numPerson} onChange={handleSelected} size={Call.getContactsLength()}>
+                        {Call.getContacts().map((e, i) => (
                             <option key={i} value={i}>{e.name}</option>
                         ))}
                     </select>

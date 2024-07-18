@@ -14,6 +14,12 @@
       ],
       "@utils/*": [
         "utils/*"
+      ],
+      "@entities/*": [
+        "core/entities/*"
+      ],
+      "@interfaces/*": [
+        "core/interfaces/*"
       ]
     },
     "jsx": "react-jsx",
