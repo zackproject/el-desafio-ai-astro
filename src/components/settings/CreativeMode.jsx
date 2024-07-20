@@ -2,22 +2,47 @@ import { useState } from "preact/hooks";
 import "./creativeMode.css";
 import { emptyQuiz } from "@utils/data/questions";
 import Creator from "@entities/Creator";
+import { setQuizLocalStorage } from "@utils/localStorage";
 
 export function CreativeMode() {
     const [data, setData] = useState(emptyQuiz);
+    const [responseSave, setResponseSave] = useState("");
     const [theme, setTheme] = useState("Segunda Guerra Mundial");
     const [responseCreative, setResponseCreative] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    // Función para manejar el envío del formulario
-    const handleSubmit = (event) => {
+    const submitForm = (event) => {
         event.preventDefault();
-        console.log(event.target)
-
-        // Aquí puedes manejar la lógica para enviar las preguntas
-        // Por ejemplo, podrías obtener los valores del formulario y procesarlos
+        const formData = new FormData(event.target);
+        saveForm(data, formData);
+        setResponseSave(Creator.getMessageSave())
+        event.target.reset();
+        setData(emptyQuiz);
     };
 
+
+
+    const saveForm = (data, formData) => {
+        let qList = []
+        let sList = [];
+        let nameTheme = formData.get(`name-theme`);
+        for (let i = 0; i < data.length; i++) {
+            // Question
+            const questionText = formData.get(`question-${i}`);
+            // Options
+            const optionsText = [
+                formData.get(`a-option-${i}`),
+                formData.get(`b-option-${i}`),
+                formData.get(`c-option-${i}`),
+                formData.get(`d-option-${i}`)
+            ];
+            // Solution
+            qList.push({ question: questionText, options: optionsText })
+            sList.push(parseInt(formData.get(`solution-${i}`)));
+        }
+        const formQuiz = { name: nameTheme, quizQuestion: qList, solutionList: sList };
+        setQuizLocalStorage(JSON.stringify(formQuiz));
+    }
 
     const fetchCreative = async (event) => {
         event.preventDefault();
@@ -25,7 +50,7 @@ export function CreativeMode() {
         setResponseCreative(Creator.getLoading());
         try {
             const response = await Creator.getSuggestQuiz(theme);
-            const result = JSON.parse(response)
+            const result = JSON.parse(response);
             setData(result);
             setResponseCreative(Creator.getSuccess());
         } catch (error) {
@@ -37,53 +62,133 @@ export function CreativeMode() {
 
     return (
         <>
-
             <h2>Crear desafío</h2>
             <h3>Usar I.A</h3>
             <p>Escribe un tematica y te sugeriré las preguntas. La revision final la harás tú.</p>
-
-            <label id="send-theme" > Tematica </label>
-            <input htmlFor="send-theme"
+            <label id="send-theme"> Tematica </label>
+            <input
+                htmlFor="send-theme"
                 type="text"
                 placeholder={theme}
                 onChange={(e) => setTheme(e.target.value)}
             />
             <button onClick={fetchCreative} className="btn-login" disabled={loading}>
                 Buscar
-            </button> {responseCreative}
+            </button>
+            {responseCreative}
             <h3>Preguntas de El desafio</h3>
             <p>Rellena los campos de las 10 preguntas y sus 4 opciones</p>
-            <form id="form-quiz" onSubmit={handleSubmit}>
-                {data.map((question, index) => (
+            <form id="form-quiz" onSubmit={submitForm}>
+                {data.map((question, i) => (
                     <fieldset key={question.id} className="question">
                         <legend>
-                            <label htmlFor={`question-${index + 1}`}>{`Pregunta ${index + 1}`}</label>
+                            <label htmlFor={`question-${i}`}>{`Pregunta ${i + 1}`}</label>
                         </legend>
                         <input
-                            id={`question-${index + 1}`}
-                            name={`question-${index + 1}`}
+                            id={`question-${i}`}
+                            name={`question-${i}`}
                             type="text"
                             placeholder="Pregunta"
                             maxLength="80"
                             required
-                            value={question.question}
+                            defaultValue={question.question}
                         />
-                        <label htmlFor={`answers-${index + 1}`}>Opciones</label>
-                        {question.options.map((option, optIndex) => (
+                        <p>Opciones</p>
+                        <label htmlFor={`a-option-${i}`}>{"A)"}</label>
+                        <input
+                            id={`a-option-${i}`}
+                            name={`a-option-${i}`}
+                            type="text"
+                            placeholder={`Respuesta 1`}
+                            maxLength="25"
+                            required
+                            defaultValue={question.options[0]}
+                        />
+                        <label htmlFor={`b-option-${i}`}>{"B)"}</label>
+                        <input
+                            id={`b-option-${i}`}
+                            name={`b-option-${i}`}
+                            type="text"
+                            placeholder={`Respuesta 2`}
+                            maxLength="25"
+                            required
+                            defaultValue={question.options[1]}
+                        />
+                        <label htmlFor={`c-option-${i}`}>{"C)"}</label>
+                        <input
+                            id={`c-option-${i}`}
+                            name={`c-option-${i}`}
+                            type="text"
+                            placeholder={`Respuesta 3`}
+                            maxLength="25"
+                            required
+                            defaultValue={question.options[2]}
+                        />
+                        <label htmlFor={`d-option-${i}`}>{"D)"}</label>
+                        <input
+                            id={`d-option-${i}`}
+                            name={`d-option-${i}`}
+                            type="text"
+                            placeholder={`Respuesta 4`}
+                            maxLength="25"
+                            required
+                            defaultValue={question.options[3]}
+                        />
+                        <p>Marca la opción correcta:</p>
+                        <div className="solution-quiz">
                             <input
-                                key={`answer-${index + 1}-${optIndex}`}
-                                name={`answers-${index + 1}`}
-                                type="text"
-                                placeholder={`Respuesta ${optIndex + 1}`}
-                                maxLength="25"
+                                type="radio"
+                                id={`a-solution-${i}`}
+                                name={`solution-${i}`}
+                                value="0"
                                 required
-                                value={option}
                             />
-                        ))}
+                            <label htmlFor={`a-solution-${i}`}>Opción A</label>
+                            <input
+                                type="radio"
+                                id={`b-solution-${i}`}
+                                name={`solution-${i}`}
+                                value="1"
+                                required
+                            />
+                            <label htmlFor={`b-solution-${i}`}>Opción B</label>
+                            <input
+                                type="radio"
+                                id={`c-solution-${i}`}
+                                name={`solution-${i}`}
+                                value="2"
+                                required
+                            />
+                            <label htmlFor={`c-solution-${i}`}>Opción C</label>
+                            <input
+                                type="radio"
+                                id={`d-solution-${i}`}
+                                name={`solution-${i}`}
+                                value="3"
+                                required
+                            />
+                            <label htmlFor={`d-solution-${i}`}>Opción D</label>
+                        </div>
                     </fieldset>
                 ))}
-                <input type="submit" value="Enviar y revisar" />
+                <label htmlFor="name-theme">Guardar como:  </label>
+                <input
+                    id="name-theme"
+                    name="name-theme"
+                    type="text"
+                    placeholder="01- Segunda Guerra Mundial"
+                    maxLength="25"
+                    required
+                    defaultValue={""}
+                />
+                <input type="submit" value="Enviar y guardar" />
             </form>
+            {responseSave}
         </>
     );
+
+
+
 }
+
+

@@ -28,13 +28,17 @@ class Creator {
                 return "La 'API Key' no es correcta. Cámbiala y vuelve a intentarlo"
             default:
                 console.log("Error", error.message);
-                return "Error desconocido. Prueba otra vez con otra tema."
+                return "Error desconocido. Prueba otra vez con otro tema."
         }
 
     }
 
     static getLoading() {
         return "Explorando el mundo digital ...";
+    }
+
+    static getMessageSave() {
+        return "Guardado correctamente en la sección de 'Categoria'";
     }
 }
 
