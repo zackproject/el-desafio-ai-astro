@@ -55,7 +55,7 @@ export const emptyQuiz: IQuiz[] = [
     }
 ];
 
-const tecnoQuiz: IQuiz[] = [
+export const tecnoQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Quién inventó la bombilla eléctrica?",
@@ -484,7 +484,7 @@ export const quizList = [
         id: 1,
         title: "Ciencia y tecnología",
         quiz: tecnoQuiz
-    },
+    }/*,
     {
         id: 2,
         title: "Historia mundial",
@@ -519,7 +519,7 @@ export const quizList = [
         id: 8,
         title: "Naturaleza",
         quiz: natureQuiz
-    },
+    },*/
 ]
 
 
