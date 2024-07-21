@@ -1,6 +1,8 @@
 // Default quiz without ai for example games
 
-export const emptyQuiz = [
+import type { IQuiz } from "@interfaces/IQuiz";
+
+export const emptyQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "",
@@ -53,7 +55,7 @@ export const emptyQuiz = [
     }
 ];
 
-const tecnoQuiz = [
+const tecnoQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Quién inventó la bombilla eléctrica?",
@@ -106,7 +108,7 @@ const tecnoQuiz = [
     }
 ];
 
-const historyQuiz = [
+const historyQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿En qué año comenzó la Primera Guerra Mundial?",
@@ -159,7 +161,7 @@ const historyQuiz = [
     }
 ];
 
-const literatureQuiz = [
+const literatureQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Quién escribió 'Romeo y Julieta'?",
@@ -212,7 +214,7 @@ const literatureQuiz = [
     }
 ];
 
-const geographyQuiz = [
+const geographyQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Cuál es la capital de Francia?",
@@ -265,7 +267,7 @@ const geographyQuiz = [
     }
 ];
 
-const cineTvQuiz = [
+const cineTvQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿En qué película aparece el personaje Harry Potter?",
@@ -318,7 +320,7 @@ const cineTvQuiz = [
     }
 ];
 
-const musicQuiz = [
+const musicQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Quién fue el vocalista principal de la banda de rock Queen?",
@@ -371,7 +373,7 @@ const musicQuiz = [
     }
 ];
 
-const artQuiz = [
+const artQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Quién pintó la Mona Lisa?",
@@ -424,7 +426,7 @@ const artQuiz = [
     }
 ];
 
-const natureQuiz = [
+const natureQuiz: IQuiz[] = [
     {
         "id": 1,
         "question": "¿Qué tipo de animal es el oso polar?",
