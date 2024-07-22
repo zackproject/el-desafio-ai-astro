@@ -1,8 +1,9 @@
+import type { iGameplay } from "@interfaces/iGameplay";
 import type { IQuiz } from "@interfaces/IQuiz";
-import { quizDefault, type iQuizDefault } from "@utils/data/quiz";
+import { quizDefault } from "@utils/data/quiz";
 const SETTINGS_ELDESAFIO = "settings-el-desafio";
 const local = window.localStorage.getItem(SETTINGS_ELDESAFIO) as string;
-const obj: iQuizDefault = JSON.parse(local);
+const obj: iGameplay = JSON.parse(local);
 
 class Gameplay {
     username: string;
@@ -81,7 +82,7 @@ class Gameplay {
             obj.solutionsList,
             nextID
         );
-        
+
         window.localStorage.setItem(SETTINGS_ELDESAFIO, JSON.stringify(gameplay));
     }
 }

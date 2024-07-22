@@ -1,8 +1,8 @@
 import { useState, useEffect } from "preact/hooks";
 import { CameraComponent } from "@components/game/videocamera/Videocamera.jsx";
 import { NavbarComponent } from "@components/shared/navbar/Navbar";
-import { ComodinContacto } from "@components/game/comodines/contact/ComodinContact";
-import { ComodinPublico } from "@components/game/comodines/public/ComodinPublico";
+import { ComodinContactComponent } from "@components/game/comodines/contact/ComodinContact";
+import { ComodinPublicComponent } from "@components/game/comodines/public/ComodinPublic";
 import { PresenterComponent } from "@components/game/Presenter/Presenter.jsx";
 import { QuizComponent } from "./quiz/Quiz";
 import Gameplay from "@entities/Gameplay";
@@ -67,8 +67,8 @@ export const GameComponent = () => {
         <>
             <NavbarComponent>
                 <div style={{ display: "flex", gap: "10px" }}>
-                    <ComodinContacto question={question} options={options}></ComodinContacto>
-                    <ComodinPublico questionId={questionId} correct={correct}></ComodinPublico>
+                    <ComodinContactComponent question={question} options={options} />
+                    <ComodinPublicComponent questionId={questionId} correct={correct} />
                 </div>
             </NavbarComponent>
 

@@ -4,7 +4,7 @@ import "./comodinContact.css";
 import { formatSeconds } from "@utils/timer";
 import Call from "@entities/Call"
 
-export const ComodinContacto = ({ question, options }) => {
+export const ComodinContactComponent = ({ question, options }) => {
     const mDialogContact = useRef(null);
     const mDialogCall = useRef(null);
     const intervalRef = useRef(null); // useRef to store interval ID

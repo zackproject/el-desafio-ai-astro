@@ -13,7 +13,7 @@ export function LoginForm({ children }) {
 
 
     const handleForm = () => {
-        Gameplay.setDefaultGamePlay(username, useCamera, useGreen);
+        Gameplay.setDefaultGamePlay(username, camera, greenscreen);
     }
 
     // <button id="resumeGame" title="Recuperar partida anterior">RECUPERAR PARTIDA</button >

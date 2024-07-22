@@ -3,6 +3,7 @@ import { aiChatResponse } from "@utils/ai";
 import { systemAi } from "@utils/data/prompts";
 
 const quizs: string = systemAi.quiz;
+const EL_DESAFIO_CREATOR = "el-desafio-creator";
 
 class Creator {
     theme: string;
@@ -39,6 +40,15 @@ class Creator {
 
     static getMessageSave() {
         return "Guardado correctamente en la sección de 'Categoria'";
+    }
+
+
+    static setQuizLocalStorage(value: string) {
+        window.localStorage.setItem(EL_DESAFIO_CREATOR, value);
+    }
+
+    static getQuizLocalStorage() {
+        window.localStorage.getItem(EL_DESAFIO_CREATOR);
     }
 }
 

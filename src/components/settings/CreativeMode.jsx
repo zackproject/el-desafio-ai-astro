@@ -1,8 +1,7 @@
 import { useState } from "preact/hooks";
-import "./creativeMode.css";
 import { emptyQuiz } from "@utils/data/questions";
 import Creator from "@entities/Creator";
-import { setQuizLocalStorage } from "@utils/localStorage";
+import "./creativeMode.css";
 
 export function CreativeMode() {
     const [data, setData] = useState(emptyQuiz);
@@ -41,7 +40,7 @@ export function CreativeMode() {
             sList.push(parseInt(formData.get(`solution-${i}`)));
         }
         const formQuiz = { name: nameTheme, quizQuestion: qList, solutionList: sList };
-        setQuizLocalStorage(JSON.stringify(formQuiz));
+        Creator.setQuizLocalStorage(JSON.stringify(formQuiz));
     }
 
     const fetchCreative = async (event) => {

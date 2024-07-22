@@ -3,7 +3,7 @@ import "../comodin.css"
 import "./comodinPublic.css"
 import { randInt } from "@utils/randNumber";
 
-export const ComodinPublico = (props) => {
+export const ComodinPublicComponent = (props) => {
     const { questionId, correct } = props;
     console.log(correct, "correcto?");
     const [votes, setVotes] = useState([0/*A*/, 0/*B*/, 0/*C*/, 0/*D*/]);

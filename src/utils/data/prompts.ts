@@ -5,8 +5,6 @@ import type { IPresenter } from "@interfaces/IPresenter"
 
 // Prompts are instructions that you give a large language model (LLM) to tell it what to do
 
-
-
 const mPresenter: IPresenter = {
     start:
         "Genera una frase de bienvenida para un concurso, incluyendo lo siguiente: " +

@@ -1,6 +1,6 @@
-import type { IQuiz } from "@interfaces/IQuiz";
+import type { iGameplay } from "@interfaces/iGameplay";
 
-export const quizDefault: iQuizDefault = {
+export const quizDefault: iGameplay = {
     idActualQuestion: 0,
     username: "Invitado",
     useCamera: false,
@@ -120,13 +120,3 @@ export const quizDefault: iQuizDefault = {
         2
     ]
 }
-
-export interface iQuizDefault {
-    idActualQuestion: number;
-    username: string;
-    questionsList: IQuiz[];
-    solutionsList: number[];
-    useGreen: boolean,
-    useCamera: boolean
-}
-
