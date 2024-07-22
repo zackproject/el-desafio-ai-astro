@@ -1,11 +1,11 @@
 ---
 import { CreativeMode } from "@components/settings/CreativeMode";
-import Navbar from "@components/shared/Navbar.astro";
+import Navbar from "@components/shared/navbar/Navbar.jsx";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="El Desafio AI - Configurar" language="es">
-  <Navbar />
+  <Navbar client:only />
   <main>
     <CreativeMode client:only />
   </main>

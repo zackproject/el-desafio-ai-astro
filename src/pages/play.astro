@@ -1,18 +1,19 @@
 ---
-import { Game } from "@components/game/Game";
-import NextQuestion from "@components/game/NextQuestion.astro";
+import { GameComponent } from "@components/game/Game";
+import Navbar from "@components/shared/navbar/Navbar";
+/*import NextQuestion from "@components/game/NextQuestion.astro";
 import Presenter from "@components/game/Presenter.astro";
 import Quiz from "@components/game/Quiz.astro";
-import Videocamera from "@components/game/videocamera/Videocamera.jsx";
-import Navbar from "@components/shared/Navbar.astro";
+import Videocamera from "@components/game/videocamera/Videocamera.jsx";*/
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="El Desafio - Empieza tu partida" language="es">
   <div class="container">
-    <Game client:only />
+    <GameComponent client:only />
+
     {
-      /* <Navbar class:list="element1" showComodin={true} />
+      /*
       <Videocamera useCamera={false} class:list="element2" client:only />
 
       <aside id="presentatorQuestion" class="element3">

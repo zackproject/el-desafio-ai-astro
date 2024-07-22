@@ -1,37 +1,97 @@
-import Videocamera from "@components/game/videocamera/Videocamera.jsx";
 import { useState, useEffect } from "preact/hooks";
-export function Game() {
+import { CameraComponent } from "@components/game/videocamera/Videocamera.jsx";
+import { NavbarComponent } from "@components/shared/navbar/Navbar";
+import { ComodinContacto } from "@components/game/comodines/contact/ComodinContact";
+import { ComodinPublico } from "@components/game/comodines/public/ComodinPublico";
+import { PresenterComponent } from "@components/game/Presenter/Presenter.jsx";
+import { QuizComponent } from "./quiz/Quiz";
+import Gameplay from "@entities/Gameplay";
+import Presenter from "@entities/Presenter";
+import "./game.css"
+
+export const GameComponent = () => {
+    const [loading, setLoading] = useState(false);
+
     const [question, setQuestion] = useState();
+    const [username, setUsername] = useState("Kevin");
     const [options, setOptions] = useState();
+    const [correct, setCorrect] = useState();
+    const [presenter, setPresenter] = useState("presentation");
+    // when question changeupdate question and options and correct
+    const [questionId, setQuestionId] = useState(1);
 
     const [camera, setCamera] = useState();
-    useEffect(() => {
-        const local = JSON.parse(localStorage.getItem("settings-el-desafio"));
-        console.log("aaaaa", local.useCamera);
+    useEffect(async () => {
+        setQuestionId(Gameplay.getQuestionId())
+        setQuestion(Gameplay.getQuestion())
+        //  setCorrect()
+        setOptions(Gameplay.getOptions())
+        setCorrect(Gameplay.getCorrectId())
+        setUsername(Gameplay.getUsername())
+        setCamera(Gameplay.isCamera())
+        document.body.style.background = Gameplay.isGreenScreen() ? '#00ff00' : '';
+        const result = await sayPresenter("presentation");
+        setPresenter(result)
+    }, []);
 
-        document.body.style.background = local.useGreen ? '#00ff00' : '';
 
-        setCamera(local.useCamera)
-        setQuestion(local.quiz[local.idActualQuestion].question)
-        setOptions(local.quiz[local.idActualQuestion].options)
 
-    },[]);
+
+    const sayPresenter = async (mType) => {
+        let response = "...";
+        switch (mType) {
+            case "presentation":
+                response = await Presenter.callPresentacion(username)
+                break;
+            case "comodin":
+                response = await Presenter.callComodin()
+                break;
+            case "correct":
+                response = await Presenter.callCorrect()
+                break;
+            case "incorrect":
+                response = await Presenter.callIncorrect(username)
+                break;
+            case "winner":
+                response = await Presenter.callWinner(username)
+                break;
+            default:
+                response = "...";
+                break;
+        }
+        console.log(response);
+        setPresenter(response);
+    }
+
     return (
         <>
-            <Videocamera useCamera={camera} className="element2" />
+            <NavbarComponent>
+                <div style={{ display: "flex", gap: "10px" }}>
+                    <ComodinContacto question={question} options={options}></ComodinContacto>
+                    <ComodinPublico questionId={questionId} correct={correct}></ComodinPublico>
+                </div>
+            </NavbarComponent>
 
-            
-            {question}
-            <ul>
-                {
-                    options && 
-                    options.map((e, i) => (
-                        <li key={i} value={i}>{e}</li>
-                    ))
-                }
+            <CameraComponent useCamera={camera} className="element2" />
+            <div class="btn-presentador">
+                <button id="btn-next" disabled={loading} onClick={() => {
+                }} title="Ir a la siguiente pregunta">
+                    <img
+                        id="img-next"
+                        src="./next.png"
+                        height="30"
+                        width="30"
+                        alt="Siguiente"
+                    />
+                </button>
+            </div>
+            {
+                presenter && <PresenterComponent presentation={presenter} />
+            }
 
-            </ul>
-
+            {
+                options && <QuizComponent question={question} options={options} />
+            }
 
         </>);
 

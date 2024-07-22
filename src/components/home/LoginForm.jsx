@@ -1,34 +1,19 @@
-import { quizList, tecnoQuiz } from "@utils/data/questions";
-import { getQuizLocalStorage, setSettingsLocalStorage } from "@utils/localStorage";
+import Gameplay from "@entities/Gameplay";
 import { useEffect, useState } from "preact/hooks";
 
 
 export function LoginForm({ children }) {
-    const [subCategory, setSubCategory] = useState();
     const [username, setUsername] = useState();
-    const [category, setCategory] = useState();
+    const [apiKey, setApiKey] = useState();
     const [camera, setCamera] = useState(false);
     const [greenscreen, setGreenscreen] = useState(false);
     useEffect(() => {
         document.body.style.background = greenscreen ? '#00ff00' : '';
-    }, [category]);
+    }, [greenscreen]);
 
-
-    const handleSubCategory = () => {
-        if (category === "0") {
-            subCategory = {name:"Tecnologia",
-                quizQuestion:tecnoQuiz,
-                solutionList:[0,0,0,0,0,0,0,0,0,0]
-
-            };
-        }
-        if (category === "1") {
-            subCategory = JSON.parse(getQuizLocalStorage());
-        }
-    }
 
     const handleForm = () => {
-        setSettingsLocalStorage(username, camera, greenscreen, );
+        Gameplay.setDefaultGamePlay(username, useCamera, useGreen);
     }
 
     // <button id="resumeGame" title="Recuperar partida anterior">RECUPERAR PARTIDA</button >
@@ -44,20 +29,19 @@ export function LoginForm({ children }) {
                 id="inputName"
                 name="name" onChange={(e) => setUsername(e.target.value)}
             />
-            <label for="categoriaViewList" class="title-input">Categoria</label>
-            <select class="select-opt" id="categoriaViewList" onChange={(e) => setCategory(e.target.value)}>
-                <option value="0">Por defecto</option>
-                <option value="1">Creado</option>
-            </select>
 
-            <select class="select-opt" id="categoriaViewList">
-                {
-                    category === "0" && quizList.map((e, i) => <option key={i} value={"default-" + e.id}>{e.title}</option>)
-                }
-                {
-                    category === "1" && <option value={"e.id"}>{"e.title"}</option>
-                }
-            </select>
+            <label for="inputKey" class="title-input">Groq API </label>
+            <input
+                maxlength="12"
+                class="text-input"
+                placeholder="https://console.groq.com/keys"
+                autocomplete="off"
+                type="password"
+                id="inputKey"
+                name="name" onChange={(e) => setApiKey(e.target.value)}
+            />
+            <label for="categoriaViewList" class="title-input">Categoria</label>
+
 
             <button class="start-btn" onClick={handleForm}>
                 COMENZAR

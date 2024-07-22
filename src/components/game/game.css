@@ -1,17 +1,4 @@
-<div class="btn-presentador">
-  <button id="btn-next" disabled title="Ir a la siguiente pregunta">
-    <img
-      id="img-next"
-      src="./next.png"
-      height="30"
-      width="30"
-      alt="Siguiente"
-    />
-  </button>
-</div>
-
-<style>
-  .btn-presentador {
+.btn-presentador {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
@@ -28,4 +15,3 @@
     padding-top: 4px;
     padding-bottom: 4px;
   }
-</style>

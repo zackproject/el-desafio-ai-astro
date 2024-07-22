@@ -1,33 +1,33 @@
 import { aiChatResponse } from "@utils/ai";
 import type { IPresenter } from "@interfaces/IPresenter";
+import { promptAi, systemAi } from "@utils/data/prompts";
+
+
+const prompt: IPresenter = promptAi.presenter;
+const sys: string = systemAi.presenter;
 
 // como el mvc del node express
 class Presenter {
-    sys: string
-    prompt: IPresenter
 
-    constructor(prompt: IPresenter, sys: string,) {
-        this.prompt = prompt;
-        this.sys = sys;
-    }
-    async callPresentacion(name: string) {
-        const result = await aiChatResponse(this.prompt.start, this.sys)
+    static async callPresentacion(name: string) {
+        const result = await aiChatResponse(prompt.start, sys)
         return result.replaceAll("{}", name);
+        
     }
-    async callComodin() {
-        const result = await aiChatResponse(this.prompt.comodin, this.sys);
+    static async callComodin() {
+        const result = await aiChatResponse(prompt.comodin, sys);
         return result;
     }
-    async callInorrect(name: string) {
-        const result = await aiChatResponse(this.prompt.fail.replaceAll("{}", name), this.sys)
+    static async callIncorrect(name: string) {
+        const result = await aiChatResponse(prompt.fail.replaceAll("{}", name), sys)
         return result.replaceAll("{}", name);
     }
-    async callCorrect() {
-        const result = await aiChatResponse(this.prompt.correct, this.sys);
+    static async callCorrect() {
+        const result = await aiChatResponse(prompt.correct, sys);
         return result;
     }
-    async callWinner(name: string) {
-        const result = await aiChatResponse(this.prompt.winner, this.sys);
+    static async callWinner(name: string) {
+        const result = await aiChatResponse(prompt.winner, sys);
         return result.replaceAll("{}", name);
 
     }

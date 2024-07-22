@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'preact/hooks';
 import "./videocamera.css";
 
-const CameraComponent = ({ useCamera }) => {
+export const CameraComponent = ({ useCamera }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -23,4 +23,3 @@ const CameraComponent = ({ useCamera }) => {
   return <video id="videoElement" ref={videoRef} autoplay></video>;
 };
 
-export default CameraComponent;
