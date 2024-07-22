@@ -50,6 +50,7 @@ class Creator {
     static getQuizLocalStorage() {
         window.localStorage.getItem(EL_DESAFIO_CREATOR);
     }
+
 }
 
 export default Creator;
