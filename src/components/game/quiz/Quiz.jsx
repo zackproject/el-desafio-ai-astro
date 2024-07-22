@@ -1,9 +1,9 @@
 import "./quiz.css"
 export const QuizComponent = (props) => {
-  const { question, options } = props;
+  const { idQuestion, question, options } = props;
   return (
     <div id="quiz-and-options">
-      <div id="question">1. {question}</div>
+      <div id="question">{idQuestion}. {question}</div>
       <div class="answer-list">
         <div id="pt0" class="option-quiz answer-quiz">
           <input id="quiz-0" name="quiz-element" type="radio" value="0" />

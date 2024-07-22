@@ -1,24 +1,42 @@
 import Gameplay from "@entities/Gameplay";
 import { useEffect, useState } from "preact/hooks";
-
+import { route } from 'preact-router';
+import { APIKEY } from "config";
 
 export function LoginForm({ children }) {
+
     const [username, setUsername] = useState();
-    const [apiKey, setApiKey] = useState();
+    const [apiKey, setApiKey] = useState("");
     const [camera, setCamera] = useState(false);
     const [greenscreen, setGreenscreen] = useState(false);
     useEffect(() => {
         document.body.style.background = greenscreen ? '#00ff00' : '';
+        if (localStorage.getItem(APIKEY) !== null) {
+            setApiKey(localStorage.getItem(APIKEY));
+        }
     }, [greenscreen]);
 
 
     const handleForm = () => {
         Gameplay.setDefaultGamePlay(username, camera, greenscreen);
+        localStorage.setItem(APIKEY, apiKey);
+        route("/play");
     }
 
     // <button id="resumeGame" title="Recuperar partida anterior">RECUPERAR PARTIDA</button >
     return (
         <>
+
+            <label for="inputKey" class="title-input">Groq API </label>
+            <input
+                class="text-input"
+                placeholder="https://console.groq.com/keys"
+                autocomplete="off"
+                type="password"
+                id="inputKey"
+                value={apiKey}
+                name="name" onChange={(e) => setApiKey(e.target.value)}
+            />
             <label for="inputName" class="title-input">Nick</label>
             <input
                 maxlength="12"
@@ -30,25 +48,8 @@ export function LoginForm({ children }) {
                 name="name" onChange={(e) => setUsername(e.target.value)}
             />
 
-            <label for="inputKey" class="title-input">Groq API </label>
-            <input
-                maxlength="12"
-                class="text-input"
-                placeholder="https://console.groq.com/keys"
-                autocomplete="off"
-                type="password"
-                id="inputKey"
-                name="name" onChange={(e) => setApiKey(e.target.value)}
-            />
-            <label for="categoriaViewList" class="title-input">Categoria</label>
 
 
-            <button class="start-btn" onClick={handleForm}>
-                COMENZAR
-            </button>
-
-
-            {children  /*<slot/>*/}
             <div class="label-settings">
                 <input
                     type="checkbox"
@@ -69,5 +70,9 @@ export function LoginForm({ children }) {
                 />
                 <label for="useGrenscreen">Pantalla verde</label>
             </div>
+            <button class="start-btn" onClick={handleForm}>
+                COMENZAR
+            </button>
+            {children  /*<slot/>*/}
         </>)
 }

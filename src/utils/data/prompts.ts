@@ -88,7 +88,7 @@ export const promptAi = {
 
 export const systemAi = {
     calls: mCalls,
-    presenter: "Eres un presentador del concurso 'El desafio'. Genera sólo una frase de no más de 20 palabras'. ",
+    presenter: "Eres un presentador del concurso 'El desafío'. Genera sólo una frase de no más de 20 palabras'. ",
     quiz: `Genera un JSON con preguntas del 1 al 10 de fácil a dificil con 4 opciones, una opción es correcta, las otras tres opciones serán incorrectas El tema te lo sugerirá el usuario. El formato de JSON es el siguiente: "+
     " [
       { "id": 0, "question": "", "options": ["", "", "",""] },

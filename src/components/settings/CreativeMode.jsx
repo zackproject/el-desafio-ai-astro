@@ -61,10 +61,10 @@ export function CreativeMode() {
 
     return (
         <>
-            <h2>Crear desafío</h2>
-            <h3>Usar I.A</h3>
-            <p>Escribe un tematica y te sugeriré las preguntas. La revision final la harás tú.</p>
-            <label id="send-theme"> Tematica </label>
+            <h2>Modificar El desafío</h2>
+            <h3>Usar A.I</h3>
+            <p>Escribe un temática y te sugeriré las preguntas. La revision final la harás tú.</p>
+            <label id="send-theme"> Temática </label>
             <input
                 htmlFor="send-theme"
                 type="text"
@@ -75,7 +75,7 @@ export function CreativeMode() {
                 Buscar
             </button>
             {responseCreative}
-            <h3>Preguntas de El desafio</h3>
+            <h3>Preguntas de El desafío</h3>
             <p>Rellena los campos de las 10 preguntas y sus 4 opciones</p>
             <form id="form-quiz" onSubmit={submitForm}>
                 {data.map((question, i) => (

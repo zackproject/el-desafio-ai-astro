@@ -5,7 +5,6 @@ import { randInt } from "@utils/randNumber";
 
 export const ComodinPublicComponent = (props) => {
     const { questionId, correct } = props;
-    console.log(correct, "correcto?");
     const [votes, setVotes] = useState([0/*A*/, 0/*B*/, 0/*C*/, 0/*D*/]);
 
     const mDialog = useRef(null);
@@ -34,20 +33,16 @@ export const ComodinPublicComponent = (props) => {
         switch (mcorrect) {
             case 1:
                 setVotes([opt4, OPT1, opt3, opt2]);
-                console.log("uno");
                 break;
             case 2:
                 setVotes([opt3, opt2, OPT1, opt4]);
-                console.log("dos");
                 break;
             case 3:
                 setVotes([opt3, opt2, opt4, OPT1]);
-                console.log("tres");
                 break;
             default:
                 //default 0
                 setVotes([OPT1, opt2, opt3, opt4]);
-                console.log("default");
                 break;
 
         }

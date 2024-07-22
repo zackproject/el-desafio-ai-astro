@@ -16,12 +16,11 @@ export const GameComponent = () => {
     const [username, setUsername] = useState("Kevin");
     const [options, setOptions] = useState();
     const [correct, setCorrect] = useState();
-    const [presenter, setPresenter] = useState("presentation");
     // when question changeupdate question and options and correct
     const [questionId, setQuestionId] = useState(1);
 
     const [camera, setCamera] = useState();
-    useEffect(async () => {
+    useEffect(() => {
         setQuestionId(Gameplay.getQuestionId())
         setQuestion(Gameplay.getQuestion())
         //  setCorrect()
@@ -30,38 +29,12 @@ export const GameComponent = () => {
         setUsername(Gameplay.getUsername())
         setCamera(Gameplay.isCamera())
         document.body.style.background = Gameplay.isGreenScreen() ? '#00ff00' : '';
-        const result = await sayPresenter("presentation");
-        setPresenter(result)
     }, []);
 
 
 
 
-    const sayPresenter = async (mType) => {
-        let response = "...";
-        switch (mType) {
-            case "presentation":
-                response = await Presenter.callPresentacion(username)
-                break;
-            case "comodin":
-                response = await Presenter.callComodin()
-                break;
-            case "correct":
-                response = await Presenter.callCorrect()
-                break;
-            case "incorrect":
-                response = await Presenter.callIncorrect(username)
-                break;
-            case "winner":
-                response = await Presenter.callWinner(username)
-                break;
-            default:
-                response = "...";
-                break;
-        }
-        console.log(response);
-        setPresenter(response);
-    }
+
 
     return (
         <>
@@ -85,12 +58,9 @@ export const GameComponent = () => {
                     />
                 </button>
             </div>
+            <PresenterComponent typePresenter="comodin" />
             {
-                presenter && <PresenterComponent presentation={presenter} />
-            }
-
-            {
-                options && <QuizComponent question={question} options={options} />
+                options && <QuizComponent idQuestion={questionId + 1} question={question} options={options} />
             }
 
         </>);
