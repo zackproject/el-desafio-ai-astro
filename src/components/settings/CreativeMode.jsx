@@ -3,6 +3,7 @@ import { emptyQuiz } from "@utils/data/questions";
 import Creator from "@entities/Creator";
 import "./creativeMode.css";
 
+
 export function CreativeMode() {
     const [data, setData] = useState(emptyQuiz);
     const [responseSave, setResponseSave] = useState("");
@@ -41,6 +42,7 @@ export function CreativeMode() {
         }
         const formQuiz = { name: nameTheme, quizQuestion: qList, solutionList: sList };
         Creator.setQuizLocalStorage(JSON.stringify(formQuiz));
+
     }
 
     const fetchCreative = async (event) => {
@@ -158,6 +160,7 @@ export function CreativeMode() {
                                 value="2"
                                 required
                             />
+
                             <label htmlFor={`c-solution-${i}`}>Opción C</label>
                             <input
                                 type="radio"
@@ -185,9 +188,4 @@ export function CreativeMode() {
             {responseSave}
         </>
     );
-
-
-
 }
-
-

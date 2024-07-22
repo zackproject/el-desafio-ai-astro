@@ -41,6 +41,7 @@ export const ComodinContactComponent = ({ question, options }) => {
             const response = await Call.getCallResponse(buildQuestion(question, options), numPerson)
             setResponseCall(response);
             startCounter(); 
+
         } catch (error) {
             setResponseCall(Call.getNoCallResponse(error));
         } finally {
