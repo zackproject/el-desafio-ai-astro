@@ -12,7 +12,7 @@ class Presenter {
     static async callPresentacion(name: string) {
         const result = await aiChatResponse(prompt.start, sys)
         return result.replaceAll("{}", name);
-        
+
     }
     static async callComodin() {
         const result = await aiChatResponse(prompt.comodin, sys);
@@ -31,6 +31,11 @@ class Presenter {
         return result.replaceAll("{}", name);
 
     }
+
+    static thinking() {
+        return "procesando ...";
+    }
+
     /*async callTrampa() {
         const result = await aiChatResponse(prompt., sys);
         return result;

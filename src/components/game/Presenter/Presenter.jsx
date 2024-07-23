@@ -2,13 +2,14 @@ import { useState, useEffect } from "preact/hooks";
 import Presenter from "@entities/Presenter";
 import "./presenter.css"
 export const PresenterComponent = (props) => {
-    const { typePresenter } = props;
+    const { typePresenter , username} = props;
     const [presenter, setPresenter] = useState("...");
 
     useEffect(async () => {
+        setPresenter(Presenter.thinking())
         const result = await sayPresenter(typePresenter);
         setPresenter(result)
-    }, []);
+    }, [typePresenter]);
 
     const sayPresenter = async (mType) => {
         switch (mType) {

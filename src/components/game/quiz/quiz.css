@@ -63,3 +63,11 @@
 .mark-answer:hover {
     background-color: orangered !important;
 }
+
+.correct {
+    background-color: #019029;
+}
+
+.incorrect {
+    background-color: #900101;
+}
