@@ -13,7 +13,7 @@ export const GameComponent = () => {
     const [inGame, setInGame] = useState(true);
     const [typePresenter, setTypePresenter] = useState("presentation");
     const [question, setQuestion] = useState();
-    const [username, setUsername] = useState("Invitado");
+    const [username, setUsername] = useState();
     const [options, setOptions] = useState(["", "", "", ""]);
     const [correct, setCorrect] = useState();
     const [colorAnswer, setColorAnswer] = useState("");
@@ -24,24 +24,24 @@ export const GameComponent = () => {
     const [camera, setCamera] = useState();
     useEffect(() => {
         // if not exist, set default
-        Gameplay.setDefaultGamePlay();
+        setUsername(Gameplay.getUsername())
+        // Gameplay.setDefaultGamePlay();
         setQuestionId(Gameplay.getQuestionId())
         setQuestion(Gameplay.getQuestion())
         setOptions(Gameplay.getOptions())
         setCorrect(Gameplay.getCorrectId())
-        setUsername(Gameplay.getUsername())
         setCamera(Settings.isCamera())
         document.body.style.background = Settings.isGreenScreen() ? '#00ff00' : '';
     }, []);
 
     const checkAnswer = (e) => {
+        setInGame(false);
         const isCorrect = Gameplay.checkQuestion(parseInt(e.target.value), correct)
         if (isCorrect) {
             setTypePresenter("correct");
         } else {
             setTypePresenter("incorrect");
         }
-        setInGame(false);
     };
 
     const nextQuestion = () => {

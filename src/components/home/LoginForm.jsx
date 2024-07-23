@@ -18,7 +18,7 @@ export function LoginForm({ children }) {
 
 
     const handleForm = () => {
-        // Gameplay.setDefaultGamePlay(username);
+        Gameplay.setDefaultGamePlay(username);
         Settings.setSettings(camera, greenscreen);
         localStorage.setItem(APIKEY, apiKey);
         setSaved(true);

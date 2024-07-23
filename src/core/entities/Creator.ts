@@ -1,10 +1,9 @@
 // import type { IQuiz } from "@interfaces/IQuiz";
 import { aiChatResponse } from "@utils/ai";
 import { systemAi } from "@utils/data/prompts";
+import { GAMEPLAY_ELDESAFIO } from "@entities/Gameplay";
 
 const quizs: string = systemAi.quiz;
-const EL_DESAFIO_CREATOR = "el-desafio-creator";
-
 class Creator {
     theme: string;
 
@@ -44,11 +43,11 @@ class Creator {
 
 
     static setQuizLocalStorage(value: string) {
-        window.localStorage.setItem(EL_DESAFIO_CREATOR, value);
+        window.localStorage.setItem(GAMEPLAY_ELDESAFIO, value);
     }
 
     static getQuizLocalStorage() {
-        window.localStorage.getItem(EL_DESAFIO_CREATOR);
+        window.localStorage.getItem(GAMEPLAY_ELDESAFIO);
     }
 
 }

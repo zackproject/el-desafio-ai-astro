@@ -1,7 +1,7 @@
 import type { iGameplay } from "@interfaces/iGameplay";
 import type { IQuiz } from "@interfaces/IQuiz";
 import { quizDefault } from "@utils/data/quiz";
-const GAMEPLAY_ELDESAFIO = "gameplay-el-desafio";
+export const GAMEPLAY_ELDESAFIO = "gameplay-el-desafio";
 const local = window.localStorage.getItem(GAMEPLAY_ELDESAFIO) as string;
 const obj: iGameplay = JSON.parse(local);
 
@@ -42,20 +42,29 @@ class Gameplay {
     }
 
     static getUsername() {
-        return obj.username;
+        const mLocal = window.localStorage.getItem(GAMEPLAY_ELDESAFIO);
+        if (mLocal !== null) {
+            return obj.username;
+        }
+        return "Invitado";
     }
 
-    static setDefaultGamePlay(username: string = "Invitado") {
-        // Only has a default gameplay if user no create one
+    static setDefaultGamePlay(mUsername: string = "Invitado") {
+        // Has a default gameplay if user no create 
         const mLocal = window.localStorage.getItem(GAMEPLAY_ELDESAFIO);
-        if (mLocal === null || mLocal === "") {
+        if (mLocal === null) {
             const mGameplay = new Gameplay(
-                username,
+                mUsername,
                 quizDefault.questionsList,
                 quizDefault.solutionsList,
                 0
             );
             window.localStorage.setItem(GAMEPLAY_ELDESAFIO, JSON.stringify(mGameplay));
+        } else {
+            // overwrite the username is created
+            const mObj: iGameplay = JSON.parse(mLocal);
+            mObj.username = mUsername;
+            window.localStorage.setItem(GAMEPLAY_ELDESAFIO, JSON.stringify(mObj));
         }
     }
 

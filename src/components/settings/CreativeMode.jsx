@@ -25,7 +25,6 @@ export function CreativeMode() {
     const saveForm = (data, formData) => {
         let qList = []
         let sList = [];
-        let nameTheme = formData.get(`name-theme`);
         for (let i = 0; i < data.length; i++) {
             // Question
             const questionText = formData.get(`question-${i}`);
@@ -40,7 +39,7 @@ export function CreativeMode() {
             qList.push({ question: questionText, options: optionsText })
             sList.push(parseInt(formData.get(`solution-${i}`)));
         }
-        const formQuiz = { name: nameTheme, quizQuestion: qList, solutionList: sList };
+        const formQuiz = { idActualQuestion: 0, questionsList: qList, solutionsList: sList, username: "Invitado" };
         Creator.setQuizLocalStorage(JSON.stringify(formQuiz));
 
     }
@@ -173,16 +172,6 @@ export function CreativeMode() {
                         </div>
                     </fieldset>
                 ))}
-                <label htmlFor="name-theme">Guardar como:  </label>
-                <input
-                    id="name-theme"
-                    name="name-theme"
-                    type="text"
-                    placeholder="01- Segunda Guerra Mundial"
-                    maxLength="25"
-                    required
-                    defaultValue={""}
-                />
                 <input type="submit" value="Enviar y guardar" />
             </form>
             {responseSave}
