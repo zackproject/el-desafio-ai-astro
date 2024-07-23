@@ -20,7 +20,12 @@ class Gameplay {
         // used to dificulty level
         return obj.idActualQuestion;
     }
-
+    static resetGame() {
+        let mObj = obj;
+        mObj.idActualQuestion = 0;
+        window.localStorage.setItem(GAMEPLAY_ELDESAFIO, JSON.stringify(mObj));
+    }
+    
     static getUsername() {
         if (obj !== null) {
             return obj.username;

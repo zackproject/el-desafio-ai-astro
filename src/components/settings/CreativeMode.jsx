@@ -61,21 +61,26 @@ export function CreativeMode() {
     };
 
     return (
-        <>
+        <main>
             <h2>Modificar El desafío</h2>
             <h3>Usar A.I</h3>
             <p>Escribe un temática y te sugeriré las preguntas. La revision final la harás tú.</p>
-            <label id="send-theme"> Temática </label>
-            <input
-                htmlFor="send-theme"
-                type="text"
-                placeholder={theme}
-                onChange={(e) => setTheme(e.target.value)}
-            />
-            <button onClick={fetchCreative} className="btn-login" disabled={loading}>
-                Buscar
-            </button>
-            {responseCreative}
+
+            <fieldset className="question">
+                <legend><label id="send-theme"> Temática </label></legend>
+
+                <input
+                    htmlFor="send-theme"
+                    type="text"
+                    placeholder={theme}
+                    onChange={(e) => setTheme(e.target.value)}
+                />
+                <button onClick={fetchCreative} className="btn-login" disabled={loading}>
+                    Buscar
+                </button>
+
+                {responseCreative}
+            </fieldset>
             <h3>Preguntas de El desafío</h3>
             <p>Rellena los campos de las 10 preguntas y sus 4 opciones</p>
             <form id="form-quiz" onSubmit={submitForm}>
@@ -93,48 +98,59 @@ export function CreativeMode() {
                             required
                             defaultValue={question.question}
                         />
-                        <p>Opciones</p>
-                        <label htmlFor={`a-option-${i}`}>{"A)"}</label>
-                        <input
-                            id={`a-option-${i}`}
-                            name={`a-option-${i}`}
-                            type="text"
-                            placeholder={`Respuesta 1`}
-                            maxLength="25"
-                            required
-                            defaultValue={question.options[0]}
-                        />
-                        <label htmlFor={`b-option-${i}`}>{"B)"}</label>
-                        <input
-                            id={`b-option-${i}`}
-                            name={`b-option-${i}`}
-                            type="text"
-                            placeholder={`Respuesta 2`}
-                            maxLength="25"
-                            required
-                            defaultValue={question.options[1]}
-                        />
-                        <label htmlFor={`c-option-${i}`}>{"C)"}</label>
-                        <input
-                            id={`c-option-${i}`}
-                            name={`c-option-${i}`}
-                            type="text"
-                            placeholder={`Respuesta 3`}
-                            maxLength="25"
-                            required
-                            defaultValue={question.options[2]}
-                        />
-                        <label htmlFor={`d-option-${i}`}>{"D)"}</label>
-                        <input
-                            id={`d-option-${i}`}
-                            name={`d-option-${i}`}
-                            type="text"
-                            placeholder={`Respuesta 4`}
-                            maxLength="25"
-                            required
-                            defaultValue={question.options[3]}
-                        />
-                        <p>Marca la opción correcta:</p>
+                        <p className="option-title">Opciones</p>
+                        <div className="option-letter">
+                            <label htmlFor={`a-option-${i}`}>{"A)"}</label>
+                            <input
+                                id={`a-option-${i}`}
+                                name={`a-option-${i}`}
+                                type="text"
+                                placeholder={`Respuesta 1`}
+                                maxLength="25"
+                                required
+                                defaultValue={question.options[0]}
+                            />
+                        </div>
+                        <div className="option-letter">
+
+                            <label htmlFor={`b-option-${i}`}>{"B)"}</label>
+                            <input
+                                id={`b-option-${i}`}
+                                name={`b-option-${i}`}
+                                type="text"
+                                placeholder={`Respuesta 2`}
+                                maxLength="25"
+                                required
+                                defaultValue={question.options[1]}
+                            />
+                        </div>
+                        <div className="option-letter">
+
+                            <label htmlFor={`c-option-${i}`}>{"C)"}</label>
+                            <input
+                                id={`c-option-${i}`}
+                                name={`c-option-${i}`}
+                                type="text"
+                                placeholder={`Respuesta 3`}
+                                maxLength="25"
+                                required
+                                defaultValue={question.options[2]}
+                            />
+                        </div>
+                        <div className="option-letter">
+
+                            <label htmlFor={`d-option-${i}`}>{"D)"}</label>
+                            <input
+                                id={`d-option-${i}`}
+                                name={`d-option-${i}`}
+                                type="text"
+                                placeholder={`Respuesta 4`}
+                                maxLength="25"
+                                required
+                                defaultValue={question.options[3]}
+                            />
+                        </div>
+                        <p className="option-title">Marca la opción correcta:</p>
                         <div className="solution-quiz">
                             <input
                                 type="radio"
@@ -174,7 +190,7 @@ export function CreativeMode() {
                 ))}
                 <input type="submit" value="Enviar y guardar" />
             </form>
-            {responseSave}
-        </>
+            <p>{responseSave}</p>
+        </main>
     );
 }
