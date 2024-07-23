@@ -1,13 +1,29 @@
 import { aiChatResponse } from "@utils/ai";
 import type { IPresenter } from "@interfaces/IPresenter";
 import { promptAi, systemAi } from "@utils/data/prompts";
-
+import { enumPresenter as enumP } from "@enum/enumPresenter";
 
 const prompt: IPresenter = promptAi.presenter;
 const sys: string = systemAi.presenter;
 
 // como el mvc del node express
 class Presenter {
+    static getNoPresenterResponse(name: string) {
+        switch (name) {
+            case enumP.presentation:
+                return "Bienvenido a El Desafio, tienes comodines disponibles y hay 10 preguntas para resolver, ¡vamos a empezar!"
+            case enumP.comodin:
+                return "Recuerda, puedes usar comodines si lo necesitas."
+            case enumP.correct:
+                return "¡Correcto! Puede continuar con la siguiente pregunta."
+            case enumP.incorrect:
+                return "Desafortunadamente ha fallado la pregunta."
+            case enumP.winner:
+                return "¡Felicidades! ¡Ha ganado El Desafio!"
+            default:
+                return "Continua así"
+        }
+    }
 
     static async callPresentacion(name: string) {
         const result = await aiChatResponse(prompt.start, sys)

@@ -2,6 +2,7 @@
 import { aiChatResponse } from "@utils/ai";
 import { systemAi } from "@utils/data/prompts";
 import { GAMEPLAY_ELDESAFIO } from "@entities/Gameplay";
+import { enumError as enumE } from "@enum/enumError";
 
 const quizs: string = systemAi.quiz;
 class Creator {
@@ -22,9 +23,9 @@ class Creator {
 
     static getError(error: Error) {
         switch (error.message) {
-            case "Failed to fetch":
+            case enumE.fetch:
                 return "No hay conexión a Internet"
-            case "Invalid API Key":
+            case enumE.apiKey:
                 return "La 'API Key' no es correcta. Cámbiala y vuelve a intentarlo"
             default:
                 console.log("Error", error.message);

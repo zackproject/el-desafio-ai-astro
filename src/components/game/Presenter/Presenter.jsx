@@ -1,27 +1,36 @@
 import { useState, useEffect } from "preact/hooks";
 import Presenter from "@entities/Presenter";
 import "./presenter.css"
+import { enumPresenter as enumP } from "@enum/enumPresenter";
+
+
 export const PresenterComponent = (props) => {
-    const { typePresenter , username} = props;
+    const { typePresenter, username } = props;
     const [presenter, setPresenter] = useState("...");
 
     useEffect(async () => {
         setPresenter(Presenter.thinking())
-        const result = await sayPresenter(typePresenter);
-        setPresenter(result)
+        try {
+            const result = await sayPresenter(typePresenter);
+            setPresenter(result)
+        } catch (error) {
+            setPresenter(Presenter.getNoPresenterResponse(typePresenter))
+
+        }
     }, [typePresenter]);
+
 
     const sayPresenter = async (mType) => {
         switch (mType) {
-            case "presentation":
+            case enumP.presentation:
                 return await Presenter.callPresentacion(username)
-            case "comodin":
+            case enumP.comodin:
                 return await Presenter.callComodin()
-            case "correct":
+            case enumP.correct:
                 return await Presenter.callCorrect()
-            case "incorrect":
+            case enumP.incorrect:
                 return await Presenter.callIncorrect(username)
-            case "winner":
+            case enumP.winner:
                 return await Presenter.callWinner(username)
             default:
                 return "...";
@@ -40,7 +49,7 @@ export const PresenterComponent = (props) => {
                     aria-hidden="true"
                 />
             </div>
-            <div id="npcPresentador" class="text-presentador">
+            <div class="text-presentador">
                 {presenter}
             </div>
         </div>)

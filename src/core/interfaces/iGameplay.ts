@@ -5,6 +5,4 @@ export interface iGameplay {
     username: string;
     questionsList: IQuiz[];
     solutionsList: number[];
-    useGreen: boolean,
-    useCamera: boolean
 }

@@ -1,17 +1,105 @@
-.btn-presentador {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+#question {
+  padding: 7px 0px 7px 5px;
+  background-color: #302e82;
+  border-radius: 6px;
+  border: 1px solid white;
+  color: white;
+}
+
+#quiz-and-options {
+
+  #quiz-0,
+  #quiz-1,
+  #quiz-2,
+  #quiz-3 {
+    display: none;
   }
 
-  .btn-presentador > button {
-    background-color: transparent;
-    border-radius: 6px;
+  margin-bottom: 10px;
+
+  /* la pregunta i les opcoions*/
+  .option-quiz {
+    border: 1px solid white;
+    /* background-color: #019029; CORRECTO*/
+    /* background-color: #900101; INCORRECTO*/
     color: white;
-    font-size: 16px;
-    border: 1px solid lightgray;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    border-radius: 6px;
+    /* opacity: 0; animation.css*/
+    overflow: hidden;
   }
+
+  .answer {
+    display: block;
+    padding: 7px 0px 7px 0px;
+    cursor: pointer;
+    transition: background-color 0.8s;
+  }
+
+  /* les opcions disponibles */
+  .answer-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .answer-quiz {
+    width: 500px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: all 0.8s;
+  }
+
+  .suboption-quiz {
+    color: yellow;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+}
+
+
+.btn-presentador {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.btn-presentador>button {
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  border: 1px solid lightgray;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  transition: background-color 1s;
+}
+
+/* Game.jsx*/
+.disabled-btn {
+  background-color: transparent;
+}
+
+.enabled-btn {
+  cursor: pointer;
+  background-color: black;
+}
+
+/* test with .answer-quiz:hover, only if is in game and not reponse */
+.mark-answer:hover {
+  background-color: orangered !important;
+}
+
+.correct-answer  {
+  background-color: #019029;
+}
+
+.incorrect-answer  {
+  background-color: #900101;
+}
+
+.default-answer {
+  background-color: #302e82;
+}

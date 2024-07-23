@@ -18,6 +18,9 @@
       "@entities/*": [
         "core/entities/*"
       ],
+      "@enum/*": [
+        "core/enum/*"
+      ],
       "@interfaces/*": [
         "core/interfaces/*"
       ]
