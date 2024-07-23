@@ -49,7 +49,7 @@ export const PresenterComponent = (props) => {
                     aria-hidden="true"
                 />
             </div>
-            <div id="npcPresentador" class="text-presentador">
+            <div class="text-presentador">
                 {presenter}
             </div>
         </div>)

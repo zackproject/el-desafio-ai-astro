@@ -1,5 +1,4 @@
 import type { iGameplay } from "@interfaces/iGameplay";
-import type { IQuiz } from "@interfaces/IQuiz";
 import { quizDefault } from "@utils/data/quiz";
 export const GAMEPLAY_ELDESAFIO = "gameplay-el-desafio";
 const local = window.localStorage.getItem(GAMEPLAY_ELDESAFIO) as string;

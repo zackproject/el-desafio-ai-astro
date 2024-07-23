@@ -12,7 +12,11 @@ Crea tu propio concurso al estilo de uno de los programas más famoso de televis
 - Generador de 10 preguntas de más fácil a más difícil
 - Comodín de la llamada con personajes con personalidad única
 
+## Anterior proyecto
 
+Este proyecto es una actualización de uno de mis miniproyectos hecho en html,css y javascript vanilla llamado El Desafio. 
+- Repositorio original : [github.com/zackproject/zackproject.github.io](https://github.com/zackproject/zackproject.github.io)
+- Desplegado en [zksama.com](https://www.zksama.com)
 
 ## Astro commands
 

@@ -57,26 +57,26 @@ export const ComodinPublicComponent = (props) => {
                 <span class="close-btn" aria-label="Cerrar" onClick={() => mDialog.current.close()}>X</span>
 
                 <div class="header">
-                    <div class="percent" id="percent-a">{votes[0]}%</div>
-                    <div class="percent" id="percent-b">{votes[1]}%</div>
-                    <div class="percent" id="percent-c">{votes[2]}%</div>
-                    <div class="percent" id="percent-d">{votes[3]}%</div>
+                    <div class="percent">{votes[0]}%</div>
+                    <div class="percent">{votes[1]}%</div>
+                    <div class="percent">{votes[2]}%</div>
+                    <div class="percent">{votes[3]}%</div>
                 </div>
                 <div class="main">
                     <div class="bar-parent">
-                        <div id="public-a" class="bar-content" title={"Opción A: " + votes[0] + "%"} style={"height:" + votes[0] + "%;"}>
+                        <div class="bar-content" title={"Opción A: " + votes[0] + "%"} style={"height:" + votes[0] + "%;"}>
                         </div>
                     </div>
                     <div class="bar-parent">
-                        <div id="public-b" class="bar-content" title={"Opción B: " + votes[1] + "%"} style={"height:" + votes[1] + "%;"}>
+                        <div class="bar-content" title={"Opción B: " + votes[1] + "%"} style={"height:" + votes[1] + "%;"}>
                         </div>
                     </div>
                     <div class="bar-parent">
-                        <div id="public-c" class="bar-content" title={"Opción C: " + votes[2] + "%"} style={"height:" + votes[2] + "%;"}>
+                        <div class="bar-content" title={"Opción C: " + votes[2] + "%"} style={"height:" + votes[2] + "%;"}>
                         </div>
                     </div>
                     <div class="bar-parent">
-                        <div id="public-d" class="bar-content" title={"Opción D: " + votes[3] + "%"} style={"height:" + votes[3] + "%;"}>
+                        <div class="bar-content" title={"Opción D: " + votes[3] + "%"} style={"height:" + votes[3] + "%;"}>
                         </div>
                     </div>
                 </div>
