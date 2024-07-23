@@ -10,15 +10,20 @@ export const PresenterComponent = (props) => {
 
     useEffect(async () => {
         setPresenter(Presenter.thinking())
-        const result = await sayPresenter(typePresenter);
-        setPresenter(result)
+        try {
+            const result = await sayPresenter(typePresenter);
+            setPresenter(result)
+        } catch (error) {
+            setPresenter(Presenter.getNoPresenterResponse(typePresenter))
+
+        }
     }, [typePresenter]);
 
 
     const sayPresenter = async (mType) => {
         switch (mType) {
             case enumP.presentation:
-            return await Presenter.callPresentacion(username)
+                return await Presenter.callPresentacion(username)
             case enumP.comodin:
                 return await Presenter.callComodin()
             case enumP.correct:

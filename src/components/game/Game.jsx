@@ -26,8 +26,9 @@ export const GameComponent = () => {
     const [camera, setCamera] = useState();
     useEffect(() => {
         // if not exist, set default
+        Gameplay.setDefaultGamePlay();
+
         setUsername(Gameplay.getUsername())
-        // Gameplay.setDefaultGamePlay();
         setQuestionId(Gameplay.getQuestionId())
         setQuestion(Gameplay.getQuestion())
         setOptions(Gameplay.getOptions())

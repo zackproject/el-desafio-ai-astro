@@ -1,38 +1,44 @@
+import type { ISettings } from "@interfaces/ISettings";
+
 const SETTINGS_ELDESAFIO = "settings-el-desafio";
+const local = window.localStorage.getItem(SETTINGS_ELDESAFIO) as string;
+const obj: ISettings = JSON.parse(local);
+
 class Settings {
-    useCamera: boolean;
-    useGreen: boolean;
 
-    constructor(
-        useCamera: boolean,
-        useGreen: boolean,
-
-    ) {
-        this.useCamera = useCamera;
-        this.useGreen = useGreen;
-    }
-
-    static setSettings(useCamera: boolean, useGreen: boolean) {
-        const mSettings = new Settings(
-            useCamera,
-            useGreen,
-        );
-        window.localStorage.setItem(SETTINGS_ELDESAFIO, JSON.stringify(mSettings));
+    static setSettings(useCamera: boolean = false, useGreen: boolean = false) {
+        let mObj = obj;
+        mObj = {
+            useCamera: useCamera,
+            useGreen: useGreen
+        }
+        window.localStorage.setItem(SETTINGS_ELDESAFIO, JSON.stringify(mObj));
     }
 
     static getSettings() {
-        const value = window.localStorage.getItem(SETTINGS_ELDESAFIO) as string;
-        return JSON.parse(value);
+        let mObj = obj;
+        if (mObj !== null) { return mObj; }
+        this.setSettings();
+        let nObj: ISettings = { useCamera: false, useGreen: false }
+        return nObj;
     }
 
-    static isGreenScreen(){
-        const value = window.localStorage.getItem(SETTINGS_ELDESAFIO) as string;
-        return JSON.parse(value).useGreen as boolean;
+    static isGreenScreen() {
+        let mObj = obj;
+        if (mObj === null) {
+            this.setSettings();
+            return false;
+        }
+        return mObj.useGreen;
     }
 
-    static isCamera(){
-        const value = window.localStorage.getItem(SETTINGS_ELDESAFIO) as string;
-        return JSON.parse(value).useCamera as boolean;
+    static isCamera() {
+        let mObj = obj;
+        if (mObj === null) {
+            this.setSettings();
+            return false;
+        }
+        return mObj.useCamera;
     }
 }
 
