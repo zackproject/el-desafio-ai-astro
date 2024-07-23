@@ -30,7 +30,7 @@ class Call {
     }
 
     static usePhone() {
-        return "Llamando";
+        return "Llamando ...";
     }
 
     static getContacts() {

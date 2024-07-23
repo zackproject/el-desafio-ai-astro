@@ -1,8 +1,8 @@
 import { useState } from "preact/hooks";
-import "./creativeMode.css";
 import { emptyQuiz } from "@utils/data/questions";
 import Creator from "@entities/Creator";
-import { setQuizLocalStorage } from "@utils/localStorage";
+import "./creativeMode.css";
+
 
 export function CreativeMode() {
     const [data, setData] = useState(emptyQuiz);
@@ -25,7 +25,6 @@ export function CreativeMode() {
     const saveForm = (data, formData) => {
         let qList = []
         let sList = [];
-        let nameTheme = formData.get(`name-theme`);
         for (let i = 0; i < data.length; i++) {
             // Question
             const questionText = formData.get(`question-${i}`);
@@ -40,8 +39,9 @@ export function CreativeMode() {
             qList.push({ question: questionText, options: optionsText })
             sList.push(parseInt(formData.get(`solution-${i}`)));
         }
-        const formQuiz = { name: nameTheme, quizQuestion: qList, solutionList: sList };
-        setQuizLocalStorage(JSON.stringify(formQuiz));
+        const formQuiz = { idActualQuestion: 0, questionsList: qList, solutionsList: sList, username: "Invitado" };
+        Creator.setQuizLocalStorage(JSON.stringify(formQuiz));
+
     }
 
     const fetchCreative = async (event) => {
@@ -62,10 +62,10 @@ export function CreativeMode() {
 
     return (
         <>
-            <h2>Crear desafío</h2>
-            <h3>Usar I.A</h3>
-            <p>Escribe un tematica y te sugeriré las preguntas. La revision final la harás tú.</p>
-            <label id="send-theme"> Tematica </label>
+            <h2>Modificar El desafío</h2>
+            <h3>Usar A.I</h3>
+            <p>Escribe un temática y te sugeriré las preguntas. La revision final la harás tú.</p>
+            <label id="send-theme"> Temática </label>
             <input
                 htmlFor="send-theme"
                 type="text"
@@ -76,7 +76,7 @@ export function CreativeMode() {
                 Buscar
             </button>
             {responseCreative}
-            <h3>Preguntas de El desafio</h3>
+            <h3>Preguntas de El desafío</h3>
             <p>Rellena los campos de las 10 preguntas y sus 4 opciones</p>
             <form id="form-quiz" onSubmit={submitForm}>
                 {data.map((question, i) => (
@@ -159,6 +159,7 @@ export function CreativeMode() {
                                 value="2"
                                 required
                             />
+
                             <label htmlFor={`c-solution-${i}`}>Opción C</label>
                             <input
                                 type="radio"
@@ -171,24 +172,9 @@ export function CreativeMode() {
                         </div>
                     </fieldset>
                 ))}
-                <label htmlFor="name-theme">Guardar como:  </label>
-                <input
-                    id="name-theme"
-                    name="name-theme"
-                    type="text"
-                    placeholder="01- Segunda Guerra Mundial"
-                    maxLength="25"
-                    required
-                    defaultValue={""}
-                />
                 <input type="submit" value="Enviar y guardar" />
             </form>
             {responseSave}
         </>
     );
-
-
-
 }
-
-

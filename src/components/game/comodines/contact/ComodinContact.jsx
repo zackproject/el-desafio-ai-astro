@@ -1,13 +1,13 @@
 import { useRef, useState } from "preact/hooks";
 import "../comodin.css";
 import "./comodinContact.css";
-import { getQuestionQuiz } from "@utils/data/questions";
 import { formatSeconds } from "@utils/timer";
 import Call from "@entities/Call"
 
-export function ComodinContacto() {
+export const ComodinContactComponent = ({ question, options }) => {
     const mDialogContact = useRef(null);
     const mDialogCall = useRef(null);
+    const intervalRef = useRef(null); // useRef to store interval ID
     const [numPerson, setNumPerson] = useState(0);
     const [data, setResponseCall] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -15,19 +15,33 @@ export function ComodinContacto() {
     // get selected person in call
     const handleSelected = (e) => setNumPerson(parseInt(e.target.value));
 
+    const buildQuestion = (mQuestion, mOptions) => {
+        return `${mQuestion} A) ${mOptions[0]} B) ${mOptions[1]} C) ${mOptions[2]} D) ${mOptions[3]} `
+    }
+
+
+    const startCounter = () => {
+        setCounter(0); // Reset counter
+        intervalRef.current = setInterval(() => {
+            setCounter((prevCounter) => {
+                if (prevCounter >= 30) {
+                    clearInterval(intervalRef.current);
+                    return prevCounter;
+                }
+                return prevCounter + 1;
+            });
+        }, 1000);
+    };
+
     const fetchData = async () => {
-        // counter call
         setCounter(0);
         setLoading(true);
         try {
-            const response = await Call.getCallResponse(getQuestionQuiz(), numPerson)
+            clearInterval(intervalRef.current);
+            const response = await Call.getCallResponse(buildQuestion(question, options), numPerson)
             setResponseCall(response);
-            const interval = setInterval(() => {
-                setCounter((prevCounter) => prevCounter + 1);
-                if (counter === 30) {
-                    clearInterval(interval);
-                }
-            }, 1000);
+            startCounter(); 
+
         } catch (error) {
             setResponseCall(Call.getNoCallResponse(error));
         } finally {
@@ -43,7 +57,7 @@ export function ComodinContacto() {
                 </div>
                 <div class="comodin-items">
                     <div id="name-call">{Call.getName(numPerson)}</div>
-                    <div id="text-call" title="Mensaje de llamada">
+                    <div id="text-call">
                         {loading ? Call.usePhone() : data}
                     </div>
                     <div id="time-call" title="Tiempo de llamada">{formatSeconds(counter)}</div>

@@ -1,0 +1,73 @@
+#question {
+    padding: 7px 0px 7px 5px;
+    background-color: #302e82;
+    border-radius: 6px;
+    border: 1px solid white;
+    color: white;
+}
+
+#quiz-and-options {
+
+    #quiz-0,
+    #quiz-1,
+    #quiz-2,
+    #quiz-3 {
+        display: none;
+    }
+
+    margin-bottom: 10px;
+
+    /* la pregunta i les opcoions*/
+    .option-quiz {
+        border: 1px solid white;
+        background-color: #302e82;
+        /* background-color: #019029; CORRECTO*/
+        /* background-color: #900101; INCORRECTO*/
+        color: white;
+        border-radius: 6px;
+        /* opacity: 0; animation.css*/
+        overflow: hidden;
+    }
+
+    .answer {
+        display: block;
+        padding: 7px 0px 7px 0px;
+        cursor: pointer;
+        transition: background-color 0.8s;
+    }
+
+    /* les opcions disponibles */
+    .answer-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .answer-quiz {
+        width: 500px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        transition: all 0.8s;
+    }
+
+    .suboption-quiz {
+        color: yellow;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 18px;
+    }
+}
+
+/* test with .answer-quiz:hover, only if is in game and not reponse */
+.mark-answer:hover {
+    background-color: orangered !important;
+}
+
+.correct {
+    background-color: #019029;
+}
+
+.incorrect {
+    background-color: #900101;
+}

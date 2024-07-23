@@ -1,9 +1,9 @@
 // import type { IQuiz } from "@interfaces/IQuiz";
 import { aiChatResponse } from "@utils/ai";
 import { systemAi } from "@utils/data/prompts";
+import { GAMEPLAY_ELDESAFIO } from "@entities/Gameplay";
 
 const quizs: string = systemAi.quiz;
-
 class Creator {
     theme: string;
 
@@ -40,6 +40,16 @@ class Creator {
     static getMessageSave() {
         return "Guardado correctamente en la sección de 'Categoria'";
     }
+
+
+    static setQuizLocalStorage(value: string) {
+        window.localStorage.setItem(GAMEPLAY_ELDESAFIO, value);
+    }
+
+    static getQuizLocalStorage() {
+        window.localStorage.getItem(GAMEPLAY_ELDESAFIO);
+    }
+
 }
 
 export default Creator;

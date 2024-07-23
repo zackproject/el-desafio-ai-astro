@@ -1,0 +1,20 @@
+#presentador {
+    position: relative;
+    margin-bottom: 15px;
+    background-color: #171929;
+
+    .img-presentador {
+      position: absolute;
+      left: 2%;
+      bottom: 94%;
+    }
+
+    .text-presentador {
+      border: 1px solid white;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      color: white;
+    }
+  }
