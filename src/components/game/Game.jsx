@@ -6,7 +6,6 @@ import { ComodinPublicComponent } from "@components/game/comodines/public/Comodi
 import { PresenterComponent } from "@components/game/Presenter/Presenter.jsx";
 import Gameplay from "@entities/Gameplay";
 import "./game.css"
-import "./quiz/quiz.css"
 import Settings from "@entities/Settings";
 import { enumPresenter as enumP } from "@enum/enumPresenter";
 
@@ -14,16 +13,14 @@ import { enumPresenter as enumP } from "@enum/enumPresenter";
 export const GameComponent = () => {
     const [inGame, setInGame] = useState(true);
     const [typePresenter, setTypePresenter] = useState("presentation");
-    const [question, setQuestion] = useState();
+    const [question, setQuestion] = useState("");
+    const [colorAnswer, setColorAnswer] = useState("");
     const [username, setUsername] = useState();
     const [options, setOptions] = useState(["", "", "", ""]);
     const [correct, setCorrect] = useState();
-    // const [colorAnswer, setColorAnswer] = useState("");
-
-    // when question changeupdate question and options and correct
     const [questionId, setQuestionId] = useState(1);
-
     const [camera, setCamera] = useState();
+
     useEffect(() => {
         // if not exist, set default
         Gameplay.setDefaultGamePlay();
@@ -42,12 +39,23 @@ export const GameComponent = () => {
         const isCorrect = Gameplay.checkQuestion(parseInt(e.target.value), correct)
         if (isCorrect) {
             setTypePresenter(enumP.correct);
+            console.log();
+            e.target.parentElement.style.backgroundColor = "green"
         } else {
             setTypePresenter(enumP.incorrect);
+            e.target.parentElement.style.backgroundColor = "red"
         }
     };
 
+    const resetAnswerColors = () => {
+        const answerElements = document.querySelectorAll('.answer-quiz');
+        answerElements.forEach(el => {
+            el.style.backgroundColor = ""; // Reset to default
+        });
+    };
+
     const nextQuestion = () => {
+        resetAnswerColors();
         const isNextAvailable = Gameplay.isNextQuestion();
         if (isNextAvailable) {
             setTypePresenter(enumP.comodin);
@@ -73,7 +81,7 @@ export const GameComponent = () => {
 
             <CameraComponent useCamera={camera} className="element2" />
             <div class="btn-presentador">
-                <button id="btn-next" disabled={inGame} style={`${inGame ? "backgroundColor:'white'; color:'black'" : ""}`} onClick={nextQuestion} title="Ir a la siguiente pregunta">
+                <button id="btn-next" disabled={inGame} className={`${!inGame ? "enabled-btn" : "disabled-btn"}`} onClick={nextQuestion} title="Ir a la siguiente pregunta">
                     <img
                         id="img-next"
                         src="./next.png"
@@ -89,29 +97,29 @@ export const GameComponent = () => {
             <div id="quiz-and-options">
                 <div id="question">{questionId + 1}. {question}</div>
                 <div class="answer-list">
-                    <div id="pt0" className={`option-quiz answer-quiz ${inGame ? "mark-answer" : ""}`} >
-                        <input id="quiz-0" name="quiz-element" disabled={!inGame} type="radio" value={0} onChange={checkAnswer} />
+                    <div id="pt0" className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
+                        <input id="quiz-0" name="quiz-element" disabled={!inGame} type="radio" value={0} />
                         <label class="answer" for="quiz-0"
                         ><span class="suboption-quiz">A</span>
                             <span class="text-answer">{options[0]}</span>
                         </label>
                     </div>
-                    <div id="pt1" className={`option-quiz answer-quiz ${inGame ? "mark-answer" : ""}`} >
-                        <input id="quiz-1" name="quiz-element" disabled={!inGame} type="radio" value={1} onChange={checkAnswer} />
+                    <div id="pt1" className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
+                        <input id="quiz-1" name="quiz-element" disabled={!inGame} type="radio" value={1} />
                         <label class="answer" for="quiz-1"
                         ><span class="suboption-quiz">B</span>
                             <span class="text-answer">{options[1]}</span>
                         </label>
                     </div>
-                    <div id="pt2" className={`option-quiz answer-quiz ${inGame ? "mark-answer" : ""}`} >
-                        <input id="quiz-2" name="quiz-element" disabled={!inGame} type="radio" value={2} onChange={checkAnswer} />
+                    <div id="pt2" className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
+                        <input id="quiz-2" name="quiz-element" disabled={!inGame} type="radio" value={2} />
                         <label class="answer" for="quiz-2"
                         ><span class="suboption-quiz">C</span>
                             <span class="text-answer">{options[2]}</span>
                         </label>
                     </div>
-                    <div id="pt3" className={`option-quiz answer-quiz ${inGame ? "mark-answer" : ""}`} >
-                        <input id="quiz-3" name="quiz-element" disabled={!inGame} type="radio" value={3} onChange={checkAnswer} />
+                    <div id="pt3" className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
+                        <input id="quiz-3" name="quiz-element" disabled={!inGame} type="radio" value={3} />
                         <label class="answer" for="quiz-3"
                         ><span class="suboption-quiz">D</span>
                             <span class="text-answer">{options[3]}</span>

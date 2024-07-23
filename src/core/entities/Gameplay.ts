@@ -23,10 +23,11 @@ class Gameplay {
     }
 
     static getUsername() {
-        if (obj != null) {
+        if (obj !== null) {
             return obj.username;
+        } else {
+            return "Invitado";
         }
-        return "Invitado";
     }
 
     static setDefaultGamePlay(mUsername: string = "Invitado") {
@@ -48,7 +49,7 @@ class Gameplay {
     }
 
     static checkQuestion(idChecked: number, idCorrectAnwer: number) {
-       //  return idChecked === idChecked; in one line
+        //  return idChecked === idChecked; in one line
         if (idChecked === idCorrectAnwer) {
             //Presentador CallCorrect()
             //Green <label>
@@ -56,6 +57,8 @@ class Gameplay {
             return true;
 
         } else {
+            obj.idActualQuestion = 0;
+            window.localStorage.setItem(GAMEPLAY_ELDESAFIO, JSON.stringify(obj));
             //Presentador CallIncorrect()
             //Red <label>
             // image retry.png 

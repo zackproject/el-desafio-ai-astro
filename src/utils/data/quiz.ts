@@ -3,8 +3,6 @@ import type { iGameplay } from "@interfaces/iGameplay";
 export const quizDefault: iGameplay = {
     idActualQuestion: 0,
     username: "Invitado",
-    useCamera: false,
-    useGreen: true,
     questionsList: [
         {
             id: 1,
