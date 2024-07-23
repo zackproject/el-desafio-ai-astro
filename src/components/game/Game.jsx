@@ -34,6 +34,7 @@ export const GameComponent = () => {
     }, []);
 
     const checkAnswer = (e) => {
+        console.log("answer", e.target.value);
         if (inGame) {
             const isCorrect = Gameplay.checkQuestion(parseInt(e.target.value), correct)
             if (isCorrect) {
@@ -74,6 +75,7 @@ export const GameComponent = () => {
     }
 
     const resetQuestion = () => {
+        Gameplay.resetGame();
         resetAnswerColors();
         setTypePresenter(enumP.presentation);
         setQuestionId(Gameplay.getQuestionId())
@@ -122,29 +124,29 @@ export const GameComponent = () => {
             <div id="quiz-and-options">
                 <div id="question">{questionId + 1}. {question}</div>
                 <div class="answer-list">
-                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
-                        <input id="quiz-0" name="quiz-element" type="radio" value={0} />
+                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} >
+                        <input id="quiz-0" name="quiz-element" type="radio" value={0} onClick={(e) => checkAnswer(e)} />
                         <label class="answer" for="quiz-0"
                         ><span class="suboption-quiz">A</span>
                             <span class="text-answer">{options[0]}</span>
                         </label>
                     </div>
-                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
-                        <input id="quiz-1" name="quiz-element" type="radio" value={1} />
+                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} >
+                        <input id="quiz-1" name="quiz-element" type="radio" value={1} onClick={(e) => checkAnswer(e)} />
                         <label class="answer" for="quiz-1"
                         ><span class="suboption-quiz">B</span>
                             <span class="text-answer">{options[1]}</span>
                         </label>
                     </div>
-                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
-                        <input id="quiz-2" name="quiz-element" type="radio" value={2} />
+                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} >
+                        <input id="quiz-2" name="quiz-element" type="radio" value={2} onClick={(e) => checkAnswer(e)} />
                         <label class="answer" for="quiz-2"
                         ><span class="suboption-quiz">C</span>
                             <span class="text-answer">{options[2]}</span>
                         </label>
                     </div>
-                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} onChange={checkAnswer}>
-                        <input id="quiz-3" name="quiz-element" disabled={!inGame} type="radio" value={3} />
+                    <div className={`option-quiz answer-quiz default-answer ${inGame ? "mark-answer" : ""}`} >
+                        <input id="quiz-3" name="quiz-element" type="radio" value={3} onClick={(e) => checkAnswer(e)} />
                         <label class="answer" for="quiz-3"
                         ><span class="suboption-quiz">D</span>
                             <span class="text-answer">{options[3]}</span>

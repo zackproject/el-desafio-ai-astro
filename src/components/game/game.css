@@ -85,11 +85,13 @@
 .enabled-btn {
   cursor: pointer;
   background-color: black;
+  border: none;
 }
 
 /* test with .answer-quiz:hover, only if is in game and not reponse */
 .mark-answer:hover {
   background-color: orangered !important;
+  cursor: pointer;
 }
 
 .correct-answer  {

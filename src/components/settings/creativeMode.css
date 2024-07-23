@@ -1,21 +1,27 @@
-body {
-    margin: 0px;
-    font-size: 16px;
-
-}
-h2{
+h2 {
     text-align: center;
 }
 
-
-#save-quiz {
-    display: none;
+.btn-login {
+    padding: 4px;
+    background-color: black;
+    color: white;
+    border: 1.5px solid white;
+    transition: all 1s;
+    width: 100px;
 }
+
+.btn-login:hover {
+    border-radius: 4px;
+    border: 1.5px solid black;
+    cursor: pointer;
+}
+
 
 .question {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 10px;
 }
 
@@ -29,9 +35,10 @@ input[type=text] {
 
 input[type=submit] {
     cursor: pointer;
+    font-size: 16px;
     background-color: black;
     color: white;
-    padding: 6px;
+    padding: 8px;
     border-radius: 3px;
     border: 1px solid white;
 }
@@ -43,70 +50,60 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-main{
+main {
     min-height: 100vh;
     max-width: 800px;
     margin: 0 auto;
     padding: 0px 10px 30px 10px;
 }
-nav {
+
+
+
+.subtitle {
     text-align: center;
+}
 
-    ul {
-        list-style: none;
-        padding-left: 0px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+.option-title {
+    margin: 5px 0px 5px 0px;
+}
 
-        button {
-            background-color: transparent;
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            min-width: 200px;
-            border: 1px solid white;
-            transition: background-color 0.3s;
-            &&:hover {
-                background-color: white;
-                cursor: pointer;
-                color: black;
-            }
-        }
+.option-letter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
+    input {
+        width: 100%;
     }
 
-    a {
-        color: white;
+    label {
+        padding-left: 10px;
     }
 }
 
-#create-challenge, #delete-challenge, #import-challenge, #export-challenge {
-    display: none;
-}
+.solution-quiz {
+    display: flex;
+    gap: 10px;
 
+    padding-bottom: 10px;
 
+    input+label {
+        border-radius: 6px;
+        border: 1px solid white;
+        padding: 5px;
+        transition: all 1s;
+        cursor: pointer;
+    }
 
-header {
-    color: white;
-    background-color: rgb(41, 41, 41);
-    width: 100%;
-    text-align: center;
-    font-size: 0.7rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-box-shadow: -1px 0px 9px 0px black;
-    box-shadow: -1px 0px 9px 0px black;
-    overflow: hidden;
-    margin-bottom: 5px;
-    position: relative;
-}
+    input+label:hover {
+        background-color: orangered;
+    }
 
-header > a{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
+    input:checked+label {
+        background-color: green;
+    }
 
-.subtitle{
-    text-align: center;
+    input[type=radio] {
+       background-color: transparent;
+    }
 }

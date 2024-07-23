@@ -39,7 +39,7 @@ class Creator {
     }
 
     static getMessageSave() {
-        return "Guardado correctamente en la sección de 'Categoria'";
+        return "Guardado correctamente";
     }
 
 
