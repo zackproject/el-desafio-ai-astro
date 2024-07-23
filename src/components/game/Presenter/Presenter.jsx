@@ -1,8 +1,11 @@
 import { useState, useEffect } from "preact/hooks";
 import Presenter from "@entities/Presenter";
 import "./presenter.css"
+import { enumPresenter as enumP } from "@enum/enumPresenter";
+
+
 export const PresenterComponent = (props) => {
-    const { typePresenter , username} = props;
+    const { typePresenter, username } = props;
     const [presenter, setPresenter] = useState("...");
 
     useEffect(async () => {
@@ -11,17 +14,18 @@ export const PresenterComponent = (props) => {
         setPresenter(result)
     }, [typePresenter]);
 
+
     const sayPresenter = async (mType) => {
         switch (mType) {
-            case "presentation":
-                return await Presenter.callPresentacion(username)
-            case "comodin":
+            case enumP.presentation:
+            return await Presenter.callPresentacion(username)
+            case enumP.comodin:
                 return await Presenter.callComodin()
-            case "correct":
+            case enumP.correct:
                 return await Presenter.callCorrect()
-            case "incorrect":
+            case enumP.incorrect:
                 return await Presenter.callIncorrect(username)
-            case "winner":
+            case enumP.winner:
                 return await Presenter.callWinner(username)
             default:
                 return "...";

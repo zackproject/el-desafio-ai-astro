@@ -8,6 +8,8 @@ import Gameplay from "@entities/Gameplay";
 import "./game.css"
 import "./quiz/quiz.css"
 import Settings from "@entities/Settings";
+import { enumPresenter as enumP } from "@enum/enumPresenter";
+
 
 export const GameComponent = () => {
     const [inGame, setInGame] = useState(true);
@@ -38,23 +40,23 @@ export const GameComponent = () => {
         setInGame(false);
         const isCorrect = Gameplay.checkQuestion(parseInt(e.target.value), correct)
         if (isCorrect) {
-            setTypePresenter("correct");
+            setTypePresenter(enumP.correct);
         } else {
-            setTypePresenter("incorrect");
+            setTypePresenter(enumP.incorrect);
         }
     };
 
     const nextQuestion = () => {
         const isNextAvailable = Gameplay.isNextQuestion();
         if (isNextAvailable) {
-            setTypePresenter("comodin");
+            setTypePresenter(enumP.comodin);
             setQuestionId(Gameplay.getQuestionId())
             setQuestion(Gameplay.getQuestion())
             //  setCorrect()
             setOptions(Gameplay.getOptions())
             setCorrect(Gameplay.getCorrectId());
         } else {
-            setTypePresenter("winner");
+            setTypePresenter(enumP.winner);
         }
         setInGame(true);
     }
@@ -80,7 +82,8 @@ export const GameComponent = () => {
                     />
                 </button>
             </div>
-            <PresenterComponent typePresenter={typePresenter} username={username} />
+            {username && <PresenterComponent typePresenter={typePresenter} username={username} />}
+
 
             <div id="quiz-and-options">
                 <div id="question">{questionId + 1}. {question}</div>

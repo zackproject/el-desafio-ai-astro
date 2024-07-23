@@ -1,6 +1,7 @@
 import type { ICall } from "@interfaces/ICall";
 import { aiChatResponse } from "@utils/ai";
 import { systemAi } from "@utils/data/prompts";
+import { enumError as enumE } from "@enum/enumError";
 
 const calls: ICall[] = systemAi.calls;
 
@@ -18,9 +19,9 @@ class Call {
 
     static getNoCallResponse(error: Error) {
         switch (error.message) {
-            case "Failed to fetch":
+            case enumE.fetch:
                 return "Sin cobertura. Compruebe la linea telefónica"
-            case "Invalid API Key":
+            case enumE.apiKey:
                 return "El pin del teléfono es incorrecto. Por favor, modifica la API"
             default:
                 console.log("Error", error.message);
