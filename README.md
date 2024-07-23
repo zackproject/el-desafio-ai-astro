@@ -12,11 +12,26 @@ Crea tu propio concurso al estilo de uno de los programas más famoso de televis
 - Generador de 10 preguntas de más fácil a más difícil
 - Comodín de la llamada con personajes con personalidad única
 
-## Anterior proyecto
+## Capturas de pantalla
+<div align="center">
+  <img width = "33%" src="https://github.com/user-attachments/assets/f1e48086-f370-4f76-8c84-aa85d46c531c">
+  <img width = "33%" src="https://github.com/user-attachments/assets/c0bda949-8f14-4dae-96ce-6560578b31e6">
+  <img width = "33%" src="https://github.com/user-attachments/assets/e7a9b220-e395-4075-a99c-cc26f318d82f">
+  <img width = "33%" src="https://github.com/user-attachments/assets/0f88ac5f-9606-41fc-845f-91cd57e90dd3">
+  <img width = "33%" src="https://github.com/user-attachments/assets/b3fb4588-9632-4670-a725-374aeb14753e">
+  <img width = "33%" src="https://github.com/user-attachments/assets/169e078a-0bb8-4bb9-b2f5-43237c1cff63">
+</div>
 
-Este proyecto es una actualización de uno de mis miniproyectos hecho en html,css y javascript vanilla llamado El Desafio. 
-- Repositorio original : [github.com/zackproject/zackproject.github.io](https://github.com/zackproject/zackproject.github.io)
+
+## Sobre el proyecto
+
+Este proyecto es una actualización de uno de mis miniproyectos hecho en html, css y javascript vanilla llamado El Desafio. 
+- Repositorio anterior : [github.com/zackproject/zackproject.github.io](https://github.com/zackproject/zackproject.github.io)
 - Desplegado en [zksama.com](https://www.zksama.com)
+
+Este nuevo proyecto está hecho con Astro + Preact usando la A.I de [Groq](https://console.groq.com/keys)
+- Repositorio actual: [github.com/zackproject/el-desafio-ai-astro](https://github.com/zackproject/el-desafio-ai-astro)
+- Desplegado en [desafio-zksama.vercel.app](https://desafio-zksama.vercel.app)
 
 ## Astro commands
 
