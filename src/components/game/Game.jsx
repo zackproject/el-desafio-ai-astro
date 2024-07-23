@@ -16,7 +16,7 @@ export const GameComponent = () => {
     const [username, setUsername] = useState();
     const [options, setOptions] = useState(["", "", "", ""]);
     const [correct, setCorrect] = useState();
-    const [colorAnswer, setColorAnswer] = useState("");
+    // const [colorAnswer, setColorAnswer] = useState("");
 
     // when question changeupdate question and options and correct
     const [questionId, setQuestionId] = useState(1);
